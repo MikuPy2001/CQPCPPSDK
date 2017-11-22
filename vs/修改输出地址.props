@@ -4,7 +4,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir>$(ProjectName)-$(Configuration)\</OutDir>
-    <IntDir>$(ProjectName)-$(Configuration)-OBJ\</IntDir>
+    <IntDir>TEMP-OBJ\$(ProjectName)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup />
