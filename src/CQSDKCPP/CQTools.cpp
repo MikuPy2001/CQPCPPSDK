@@ -1,6 +1,5 @@
 #include "..\CQSDK\CQTools.h"  
 
-//#include <windows.h>
 #include <string>
 
 #include "..\CQSDK\Unpack.h"
