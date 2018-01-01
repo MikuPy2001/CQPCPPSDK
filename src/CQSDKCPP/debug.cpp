@@ -1,6 +1,3 @@
-
-
-
 #include "..\CQSDK\CQAPI_EX.h"
 #include "..\CQSDK\CQEVE.h"
 
@@ -84,7 +81,7 @@ list<stack> dump_callstack(CONTEXT *context)
 int dump(EXCEPTION_POINTERS* ep,char*evename,char*msg) {
 	if (SymInitialize(GetCurrentProcess(), NULL, TRUE)) {
 		auto stack=dump_callstack(ep->ContextRecord);
-		CQ::addLog(Log_Error, evename, msg);
+		CQ::addLog(Log_Debug, evename, msg);
 		for (auto s : stack) 
 			CQ::addLog(Log_Debug, evename, s.tostring().c_str());
 		SymCleanup(GetCurrentProcess());
