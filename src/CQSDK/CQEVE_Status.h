@@ -17,7 +17,7 @@
 	{\
 		CQ::EVEStatus tep;\
 		static std::string ret;\
-		Name(tep);\
+		EVETry Name(tep); EVETryEnd(Name,发生了一个错误)										\
 		ret = CQ::statusEVEreturn(tep);\
 		return ret.c_str();\
 	}\

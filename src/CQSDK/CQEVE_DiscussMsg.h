@@ -21,8 +21,8 @@ font		字体
 	void Name(CQ::EVEDiscussMsg & eve);															\
 	EVE_PrivateMsg(Name)																		\
 	{																							\
-		CQ::EVEDiscussMsg tep(subType, msgId, fromDiscuss, fromQQ, msg, Font);				\
-		Name(tep);																				\
+		CQ::EVEDiscussMsg tep(subType, msgId, fromDiscuss, fromQQ, msg, Font);					\
+		EVETry Name(tep); EVETryEnd(Name,发生了一个错误)										\
 		return tep._EVEret;																		\
 	}																							\
 	void Name(CQ::EVEDiscussMsg & eve)

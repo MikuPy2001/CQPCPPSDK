@@ -8,7 +8,19 @@ Written by MukiPy2001 & Thanks for the help of orzFly and Coxxs
 #define CQEVENT(ReturnType, Name, Size) __pragma(comment(linker, "/EXPORT:" #Name "=_" #Name "@" #Size))\
 	extern "C" __declspec(dllexport) ReturnType __stdcall Name
 
-///////////////////////////////// 必填信息 /////////////////////////////////
+#ifdef _DEBUG
+	#define SAFE_EVE
+#endif // _DEBUG
+
+#ifdef SAFE_EVE
+	#include <Windows.h>
+	#define EVETry __try{
+	#define EVETryEnd(evename,msg) }__except(dump(GetExceptionInformation(),#evename,#msg)){}
+	int dump(EXCEPTION_POINTERS* ep, char*evename, char*msg);
+#else
+	#define EVETry 
+	#define EVETryEnd(evename,msg)
+#endif // SAFE_EVE
 
 /*
 返回应用的ApiVer、Appid，打包后将不会调用

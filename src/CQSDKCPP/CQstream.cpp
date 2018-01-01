@@ -94,22 +94,23 @@ inline CQ::CQstream::~CQstream() {}
 
 inline CQ::logstream::logstream(std::string title, int Log_flag) : flag(Log_flag), title(title) {}
 
-void CQ::logstream::send() { addLog(flag, title.c_str(), buf.c_str()); }
+void CQ::logstream::send() {if (buf.size() <= 0)return; addLog(flag, title.c_str(), buf.c_str()); }
 
 CQ::msg::msg(long long ID, msgtype Type) : ID(ID), subType(Type) {}
 
 CQ::msg::msg(long long ID, int Type) : ID(ID), subType(Type) {}
 
 void CQ::msg::send() {
+	if (buf.size() <= 0)return;
 	switch (subType)
 	{
-	case 1://好友
+	case msgtype::好友://好友
 		sendPrivateMsg(ID, buf);
 		break;
-	case 2://群
+	case msgtype::群://群
 		sendGroupMsg(ID, buf);
 		break;
-	case 3://讨论组
+	case msgtype::讨论组://讨论组
 		sendDiscussMsg(ID, buf);
 		break;
 	default:

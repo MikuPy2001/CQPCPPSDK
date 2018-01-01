@@ -26,7 +26,7 @@ font 字体
 	EVE_GroupMsg(Name)																		\
 	{																							\
 		CQ::EVEGroupMsg tep(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font);	\
-		Name(tep);																				\
+		EVETry Name(tep); EVETryEnd(Name,发生了一个错误)										\
 		return tep._EVEret;																		\
 	}																							\
 	void Name(CQ::EVEGroupMsg & eve)

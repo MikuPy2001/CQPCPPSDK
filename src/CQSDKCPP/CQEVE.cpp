@@ -124,8 +124,8 @@ bool CQ::EVEPrivateMsg::fromGroup() const { return subType == 2; }
 //来自讨论组临时
 bool CQ::EVEPrivateMsg::fromDiscuss() const { return subType == 3; }
 
-msg CQ::EVEGroupMsg::sendMsg()const { return msg(fromGroup, msgtype::群); }
 msg CQ::EVEPrivateMsg::sendMsg() const { return msg(fromQQ, msgtype::好友); }
+msg CQ::EVEGroupMsg::sendMsg()const { return msg(fromGroup, msgtype::群); }
 msg CQ::EVEDiscussMsg::sendMsg() const { return msg(fromQQ, msgtype::讨论组); }
 
 int CQ::EVEPrivateMsg::sendMsg(const char * msg) const { return sendPrivateMsg(fromQQ,msg); }

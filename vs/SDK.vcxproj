@@ -142,6 +142,7 @@
     <ClCompile Include="..\src\CQSDKCPP\CQmsgcode.cpp" />
     <ClCompile Include="..\src\CQSDKCPP\CQstream.cpp" />
     <ClCompile Include="..\src\CQSDKCPP\CQTools.cpp" />
+    <ClCompile Include="..\src\CQSDKCPP\debug.cpp" />
     <ClCompile Include="..\src\CQSDKCPP\Unpack.cpp" />
   </ItemGroup>
   <ItemGroup>

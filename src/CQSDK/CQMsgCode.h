@@ -7,22 +7,23 @@ namespace CQ {
 	struct code {
 		//[CQ:image,file={1}] - 发送自定义图片
 		//文件以 酷Q目录\data\image\ 为基础
-		static	std::string image(std::string fileurl);
+		static std::string image(std::string fileurl);
 
 		//[CQ:record,file={1},magic={2}] - 发送语音
 		//文件以 酷Q目录\data\record\ 为基础
-		static	std::string record(std::string fileurl, bool magic);
+		static std::string record(std::string fileurl, bool magic);
 
 		//[CQ:face,id={1}] - QQ表情
-		static	std::string face(int faceid);
+		static std::string face(int faceid);
 
 		//[CQ:face,id={1}] - QQ表情
-		static	std::string face(CQ::face face);
+		static std::string face(CQ::face face);
 
 		//[CQ:at,qq={1}] - @某人
-		static	std::string at(long long QQ);
+		static std::string at(long long QQ);
 
 		//[CQ:effect,type=art,id=2003,content=小吉] - 魔法字体
+		static std::string effect(std::string type,int id, std::string content);
 		
 		//[CQ:sign, title = 晒幸福, image = http ://pub.idqqimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
 		
