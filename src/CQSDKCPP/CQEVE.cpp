@@ -1,5 +1,5 @@
 /*
-´ËÎÄ¼şÊÇËùÓĞEXÊÂ¼şµÄÊµÏÖ
+æ­¤æ–‡ä»¶æ˜¯æ‰€æœ‰EXäº‹ä»¶çš„å®ç°
 */
 #include "..\CQSDK\CQEVE_ALL.h"
 
@@ -11,8 +11,8 @@
 
 using namespace CQ;
 
-void CQ::EVE::message_ignore() { _EVEret = ÏûÏ¢_À¹½Ø; }
-void CQ::EVE::message_block() { _EVEret = ÏûÏ¢_ºöÂÔ; }
+void CQ::EVE::message_ignore() { _EVEret = æ¶ˆæ¯_å¿½ç•¥; }
+void CQ::EVE::message_block() { _EVEret = æ¶ˆæ¯_æ‹¦æˆª; }
 
 bool CQ::EVEMsg::isSystem() const { return fromQQ == 1000000; }
 
@@ -21,12 +21,12 @@ Font::Font(int Font) { RtlMoveMemory(static_cast<void*>(this), reinterpret_cast<
 CQ::EVEMsg::EVEMsg(int subType, int msgId, long long fromQQ, std::string message, int font)
 	: subType(subType), msgId(msgId), fromQQ(fromQQ), message(message) , font(font){}
 
-//ÕæÊµÓÃ»§
+//çœŸå®ç”¨æˆ·
 bool CQ::EVEMsg::isUser() const {
 	switch (fromQQ)
 	{
-	case 1000000:// ÏµÍ³ÌáÊ¾
-	case 80000000:// ÄäÃû
+	case 1000000:// ç³»ç»Ÿæç¤º
+	case 80000000:// åŒ¿å
 		return false;
 	default:
 		return true;
@@ -74,34 +74,34 @@ bool CQ::EVEGroupMsg::setGroupAdmin(bool isAdmin)
 	return !CQ::setGroupAdmin(fromGroup, fromQQ, isAdmin);
 }
 
-bool CQ::EVEGroupMsg::setGroupSpecialTitle(std::string ×¨ÊôÍ·ÏÎ, long long ¹ıÆÚÊ±¼ä)
+bool CQ::EVEGroupMsg::setGroupSpecialTitle(std::string ä¸“å±å¤´è¡”, long long è¿‡æœŸæ—¶é—´)
 {
-	return !CQ::setGroupSpecialTitle(fromGroup, fromQQ, ×¨ÊôÍ·ÏÎ, ¹ıÆÚÊ±¼ä);
+	return !CQ::setGroupSpecialTitle(fromGroup, fromQQ, ä¸“å±å¤´è¡”, è¿‡æœŸæ—¶é—´);
 }
 
-bool CQ::EVEGroupMsg::setGroupWholeBan(bool ¿ªÆô½ûÑÔ)
+bool CQ::EVEGroupMsg::setGroupWholeBan(bool å¼€å¯ç¦è¨€)
 {
-	return CQ::setGroupWholeBan(fromGroup, ¿ªÆô½ûÑÔ);
+	return CQ::setGroupWholeBan(fromGroup, å¼€å¯ç¦è¨€);
 }
 
-bool CQ::EVEGroupMsg::setGroupAnonymous(bool ¿ªÆôÄäÃû)
+bool CQ::EVEGroupMsg::setGroupAnonymous(bool å¼€å¯åŒ¿å)
 {
-	return CQ::setGroupAnonymous(fromGroup, ¿ªÆôÄäÃû);
+	return CQ::setGroupAnonymous(fromGroup, å¼€å¯åŒ¿å);
 }
 
-bool CQ::EVEGroupMsg::setGroupCard(std::string ĞÂÃûÆ¬_êÇ³Æ)
+bool CQ::EVEGroupMsg::setGroupCard(std::string æ–°åç‰‡_æ˜µç§°)
 {
-	return CQ::setGroupCard(fromGroup, fromQQ, ĞÂÃûÆ¬_êÇ³Æ);
+	return CQ::setGroupCard(fromGroup, fromQQ, æ–°åç‰‡_æ˜µç§°);
 }
 
-bool CQ::EVEGroupMsg::setGroupLeave(bool ÊÇ·ñ½âÉ¢)
+bool CQ::EVEGroupMsg::setGroupLeave(bool æ˜¯å¦è§£æ•£)
 {
-	return CQ::setGroupLeave(fromGroup, ÊÇ·ñ½âÉ¢);
+	return CQ::setGroupLeave(fromGroup, æ˜¯å¦è§£æ•£);
 }
 
-GroupMemberInfo CQ::EVEGroupMsg::getGroupMemberInfo(bool ²»Ê¹ÓÃ»º´æ)
+GroupMemberInfo CQ::EVEGroupMsg::getGroupMemberInfo(bool ä¸ä½¿ç”¨ç¼“å­˜)
 {
-	return CQ::getGroupMemberInfo(fromGroup, fromQQ, ²»Ê¹ÓÃ»º´æ);
+	return CQ::getGroupMemberInfo(fromGroup, fromQQ, ä¸ä½¿ç”¨ç¼“å­˜);
 }
 
 std::vector<GroupMemberInfo> CQ::EVEGroupMsg::getGroupMemberList()
@@ -112,21 +112,21 @@ std::vector<GroupMemberInfo> CQ::EVEGroupMsg::getGroupMemberList()
 CQ::EVEPrivateMsg::EVEPrivateMsg(int subType, int msgId, long long fromQQ, const char * msg, int font)
 	: EVEMsg(subType, msgId, fromQQ, msg, font) {}
 
-//À´×ÔºÃÓÑ
+//æ¥è‡ªå¥½å‹
 bool CQ::EVEPrivateMsg::fromPrivate() const { return subType == 11; }
 
-//À´×ÔÔÚÏß×´Ì¬
+//æ¥è‡ªåœ¨çº¿çŠ¶æ€
 bool CQ::EVEPrivateMsg::fromOnlineStatus() const { return subType == 1; }
 
-//À´×ÔÈºÁÙÊ±
+//æ¥è‡ªç¾¤ä¸´æ—¶
 bool CQ::EVEPrivateMsg::fromGroup() const { return subType == 2; }
 
-//À´×ÔÌÖÂÛ×éÁÙÊ±
+//æ¥è‡ªè®¨è®ºç»„ä¸´æ—¶
 bool CQ::EVEPrivateMsg::fromDiscuss() const { return subType == 3; }
 
-msg CQ::EVEPrivateMsg::sendMsg() const { return msg(fromQQ, msgtype::ºÃÓÑ); }
-msg CQ::EVEGroupMsg::sendMsg()const { return msg(fromGroup, msgtype::Èº); }
-msg CQ::EVEDiscussMsg::sendMsg() const { return msg(fromQQ, msgtype::ÌÖÂÛ×é); }
+msg CQ::EVEPrivateMsg::sendMsg() const { return msg(fromQQ, msgtype::å¥½å‹); }
+msg CQ::EVEGroupMsg::sendMsg()const { return msg(fromGroup, msgtype::ç¾¤); }
+msg CQ::EVEDiscussMsg::sendMsg() const { return msg(fromQQ, msgtype::è®¨è®ºç»„); }
 
 int CQ::EVEPrivateMsg::sendMsg(const char * msg) const { return sendPrivateMsg(fromQQ,msg); }
 int CQ::EVEPrivateMsg::sendMsg(std::string msg) const { return sendPrivateMsg(fromQQ,msg); }
@@ -165,11 +165,11 @@ CQ::EVERequestAddFriend::EVERequestAddFriend(int subType, int sendTime, long lon
 
 void CQ::EVERequestAddFriend::pass(std::string msg)
 {
-	setFriendAddRequest(responseFlag, ÇëÇó_Í¨¹ı, msg.c_str());
+	setFriendAddRequest(responseFlag, è¯·æ±‚_é€šè¿‡, msg.c_str());
 }
 void CQ::EVERequestAddFriend::fail(std::string msg)
 {
-	setFriendAddRequest(responseFlag, ÇëÇó_¾Ü¾ø, msg.c_str());
+	setFriendAddRequest(responseFlag, è¯·æ±‚_æ‹’ç», msg.c_str());
 }
 CQ::EVERequestAddGroup::EVERequestAddGroup(int subType, int sendTime, long long fromGroup, long long fromQQ, const char * msg, const char * responseFlag)
 	: EVERequest(sendTime, fromQQ, msg, responseFlag), subType(subType), fromGroup(fromGroup)
@@ -177,31 +177,31 @@ CQ::EVERequestAddGroup::EVERequestAddGroup(int subType, int sendTime, long long 
 
 void CQ::EVERequestAddGroup::pass(std::string msg)
 {
-	setGroupAddRequest(responseFlag, subType, ÇëÇó_Í¨¹ı, msg.c_str());
+	setGroupAddRequest(responseFlag, subType, è¯·æ±‚_é€šè¿‡, msg.c_str());
 }
 
 void CQ::EVERequestAddGroup::fail(std::string msg)
 {
-	setGroupAddRequest(responseFlag, subType, ÇëÇó_¾Ü¾ø, msg.c_str());
+	setGroupAddRequest(responseFlag, subType, è¯·æ±‚_æ‹’ç», msg.c_str());
 }
 
 AnonymousInfo::AnonymousInfo(const char* msg)
 {
 	if (msg[0] == '\0')
 	{
-		AID = 0; ´úºÅ = "";
+		AID = 0; ä»£å· = "";
 	}
 	else {
 		Unpack p(base64_decode(msg));
 		AID = p.getLong();
-		´úºÅ = p.getstring();
+		ä»£å· = p.getstring();
 		//Token = p.getchars();
 	}
 }
 CQ::regexMsg::regexMsg(std::string msg)
 {
 	Unpack msgs(base64_decode(msg));
-	auto len = msgs.getInt();//»ñÈ¡²ÎÊıÊıÁ¿
+	auto len = msgs.getInt();//è·å–å‚æ•°æ•°é‡
 	while (len-- > 0) {
 		auto tep = msgs.getUnpack();
 		auto key = tep.getstring();
