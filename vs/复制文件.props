@@ -2,10 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <OutDir>$(ProjectName)-$(Configuration)\</OutDir>
-    <IntDir>$(ProjectName)-$(Configuration)-OBJ\</IntDir>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup>
     <PostBuildEvent>
       <Command>echo 正在执行自定义命令

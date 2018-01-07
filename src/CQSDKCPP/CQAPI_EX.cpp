@@ -39,7 +39,7 @@ string CQ::StrangerInfo::tostring() const
 
 void CQ::GroupMemberInfo::Void()
 {
-	群号 = 0;
+	Group = 0;
 	QQID = 0;
 	昵称 = "";
 	名片 = "";
@@ -58,7 +58,7 @@ void CQ::GroupMemberInfo::Void()
 
 void CQ::GroupMemberInfo::setdata(Unpack& u)
 {
-	群号 = u.getLong();
+	Group = u.getLong();
 	QQID = u.getLong();
 	昵称 = u.getstring();
 	名片 = u.getstring();
@@ -108,7 +108,7 @@ CQ::GroupMemberInfo::GroupMemberInfo(vector<unsigned char> data)
 string CQ::GroupMemberInfo::tostring() const
 {
 	string s = "{";
-	s += "群号:"; s += to_string(群号);
+	s += "群号:"; s += to_string(Group);
 	s += " ,QQID:"; s += to_string(QQID);
 	s += " ,昵称:"; s += 昵称;
 	s += " ,名片:"; s += 名片;

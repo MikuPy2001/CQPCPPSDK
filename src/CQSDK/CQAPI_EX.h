@@ -176,7 +176,7 @@ namespace CQ {
 		void Void();
 		void setdata(Unpack&pack);
 	public:
-		长整数型 群号;
+		长整数型 Group;
 		长整数型 QQID;
 		std::string 昵称;
 		std::string 名片;

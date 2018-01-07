@@ -10,6 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cn.whatcraft.MikuPy2001.SDK
 		{2869DBD7-ECBE-462D-9A46-B604DD992C22} = {2869DBD7-ECBE-462D-9A46-B604DD992C22}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test.vcxproj", "{4B2DD493-D132-4716-86CA-651A4803C422}"
+	ProjectSection(ProjectDependencies) = postProject
+		{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D} = {98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +39,14 @@ Global
 		{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}.Release|x64.Build.0 = Release|x64
 		{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}.Release|x86.ActiveCfg = Release|Win32
 		{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}.Release|x86.Build.0 = Release|Win32
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Debug|x64.ActiveCfg = Debug|x64
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Debug|x64.Build.0 = Debug|x64
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Debug|x86.ActiveCfg = Debug|Win32
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Debug|x86.Build.0 = Debug|Win32
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x64.ActiveCfg = Release|x64
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x64.Build.0 = Release|x64
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x86.ActiveCfg = Release|Win32
+		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

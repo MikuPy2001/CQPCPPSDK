@@ -1,9 +1,61 @@
 #pragma once
-#include <string>
 #include "CQface.h"
-#include <shared_mutex>
+
+#include <string>
+#include <vector>
+#include <map>
+#include <memory>
+//#include <shared_mutex>
 
 namespace CQ {
+	struct OneCodeMsg { size_t key, keylen = 0, value = 0; OneCodeMsg(size_t key); };
+	struct CodeMsg :public
+		std::vector<OneCodeMsg> {
+		bool isCode;
+		size_t key, keylen = 0;
+		CodeMsg(bool isCode, size_t key);
+	};
+	//消息解析
+	class CodeMsgs : public
+		std::vector<CodeMsg> 
+	{
+		std::string txt;
+		int thismsg;//指针
+		void decod();//解码
+	public:
+		CodeMsgs(std::string);
+
+		char* at(int);
+
+		//定位到指定段
+		CQ::CodeMsgs&operator[](int);
+
+		//从当前位置开始搜索指定cq码
+		//如果存在,定位到指定段
+		//否则返回null,并且不会移动指针
+		CQ::CodeMsgs&find(std::string s);
+
+		//从当前位置开始反向搜索指定cq码
+		//如果存在,定位到指定段
+		//否则返回null,并且不会移动指针
+		CQ::CodeMsgs&listfind(std::string);
+
+
+		//判断是否是CQ码
+		bool isCQcode();
+
+		//判断是否为指定CQ码
+		bool is(std::string);
+
+		//如果是CQ码,返回CQ码类型
+		//如果不是,返回消息
+		std::string get();
+
+		//如果是CQ码,返回键对应的值
+		//如果找不到键,则返回空字符
+		//如果不是,返回空字符
+		std::string get(std::string key);
+	};
 	struct code {
 		//[CQ:image,file={1}] - 发送自定义图片
 		//文件以 酷Q目录\data\image\ 为基础
@@ -23,10 +75,10 @@ namespace CQ {
 		static std::string at(long long QQ);
 
 		//[CQ:effect,type=art,id=2003,content=小吉] - 魔法字体
-		static std::string effect(std::string type,int id, std::string content);
-		
-		//[CQ:sign, title = 晒幸福, image = http ://pub.idqqimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
-		
+		static std::string effect(std::string type, int id, std::string content);
+
+		//[CQ:sign,title=晒幸福,image=http://pub.idqqimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
+
 		//[CQ:hb, title = 恭喜发财] - 红包(只限收,不能发)
 
 		//[CQ:shake, id = 1] - 戳一戳(原窗口抖动，仅支持好友消息使用)
