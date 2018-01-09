@@ -1,28 +1,28 @@
 #pragma once
 
-//#include "CQEVE.h"//²»ÄÜÉ¾³ı´ËĞĞ...
+//#include "CQEVE.h"//ä¸èƒ½åˆ é™¤æ­¤è¡Œ...
 #include "CQMsgSend.h"
 
 /*
-ÌÖÂÛ×éÏûÏ¢(Type=4)
+è®¨è®ºç»„æ¶ˆæ¯(Type=4)
 
-subtype		×ÓÀàĞÍ£¬Ä¿Ç°¹Ì¶¨Îª1
-msgId	ÏûÏ¢ID
-fromDiscuss	À´Ô´ÌÖÂÛ×é
-fromQQ		À´Ô´QQºÅ
-msg			ÏûÏ¢ÄÚÈİ
-font		×ÖÌå
+subtype		å­ç±»å‹ï¼Œç›®å‰å›ºå®šä¸º1
+msgId	æ¶ˆæ¯ID
+fromDiscuss	æ¥æºè®¨è®ºç»„
+fromQQ		æ¥æºQQå·
+msg			æ¶ˆæ¯å†…å®¹
+font		å­—ä½“
 
-±¾×Ó³ÌĞò»áÔÚ¿áQ¡¾Ïß³Ì¡¿ÖĞ±»µ÷ÓÃ£¬Çë×¢ÒâÊ¹ÓÃ¶ÔÏóµÈĞèÒª³õÊ¼»¯(CoInitialize,CoUninitialize)
-Ãû×ÖÈç¹ûÊ¹ÓÃÏÂ»®Ïß¿ªÍ·ĞèÒª¸Ä³ÉË«ÏÂ»®Ïß
-·µ»Ø·ÇÁãÖµ,ÏûÏ¢½«±»À¹½Ø,×î¸ßÓÅÏÈ²»¿ÉÀ¹½Ø
+æœ¬å­ç¨‹åºä¼šåœ¨é…·Qã€çº¿ç¨‹ã€‘ä¸­è¢«è°ƒç”¨ï¼Œè¯·æ³¨æ„ä½¿ç”¨å¯¹è±¡ç­‰éœ€è¦åˆå§‹åŒ–(CoInitialize,CoUninitialize)
+åå­—å¦‚æœä½¿ç”¨ä¸‹åˆ’çº¿å¼€å¤´éœ€è¦æ”¹æˆåŒä¸‹åˆ’çº¿
+è¿”å›éé›¶å€¼,æ¶ˆæ¯å°†è¢«æ‹¦æˆª,æœ€é«˜ä¼˜å…ˆä¸å¯æ‹¦æˆª
 */
 #define EVE_DiscussMsg_EX(Name)																	\
 	void Name(CQ::EVEDiscussMsg & eve);															\
-	EVE_PrivateMsg(Name)																		\
+	EVE_DiscussMsg(Name)																		\
 	{																							\
-		CQ::EVEDiscussMsg tep(subType, msgId, fromDiscuss, fromQQ, msg, Font);					\
-		EVETry Name(tep); EVETryEnd(Name,·¢ÉúÁËÒ»¸ö´íÎó)										\
+		CQ::EVEDiscussMsg tep(subType, msgId, fromDiscuss, fromQQ, msg, font);					\
+		EVETry Name(tep); EVETryEnd(Name,å‘ç”Ÿäº†ä¸€ä¸ªé”™è¯¯)										\
 		return tep._EVEret;																		\
 	}																							\
 	void Name(CQ::EVEDiscussMsg & eve)
@@ -31,13 +31,13 @@ font		×ÖÌå
 namespace CQ {
 	struct EVEDiscussMsg :public EVEMsg
 	{
-		long long fromDiscuss;//ÌÖÂÛ×éºÅ
+		long long fromDiscuss;//è®¨è®ºç»„å·
 
 		EVEDiscussMsg(int subType, int msgId, long long fromDiscuss, long long fromQQ, const char* msg, int font);
 
-		bool leave() const;//ÍË³öÌÖÂÛ×é
+		bool leave() const;//é€€å‡ºè®¨è®ºç»„
 
-		// Í¨¹ı EVEMsg ¼Ì³Ğ
+		// é€šè¿‡ EVEMsg ç»§æ‰¿
 		virtual msg sendMsg() const override;
 		virtual int sendMsg(const char *) const override;
 		virtual int sendMsg(std::string) const override;
