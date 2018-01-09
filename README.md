@@ -159,8 +159,8 @@ EVE_PrivateMsg_EX(functionPrivateMsg) {
 	int i = eve.font.气泡;//获取对方的气泡类型  
   
 	eve.sendMsg() << "你发送了这样的消息:" << endl << eve.message <<send;  
-	eve.message_ignore();//拦截消息  
-	//EX函数无需返回值,默认不拦截消息,如需拦截,请使用 eve.message_ignore();  
+	eve.message_block();//拦截消息  
+	//EX函数无需返回值,默认不拦截消息,如需拦截,请使用 eve.message_block();  
 }  
 ```  
 所有事件在`CQEVE.h`有详细的说明  
