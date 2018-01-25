@@ -8,37 +8,53 @@
 //#include <shared_mutex>
 
 namespace CQ {
+	//cq消息参数
 	struct OneCodeMsg { size_t key, keylen = 0, value = 0; OneCodeMsg(size_t key); };
-	struct CodeMsg :public
-		std::vector<OneCodeMsg> {
-		bool isCode;
-		size_t key, keylen = 0;
-		CodeMsg(bool isCode, size_t key);
+	//一条cq消息或者普通消息
+	struct CodeMsg : std::vector<OneCodeMsg> { public: bool isCode; size_t key, keylen = 0; CodeMsg(bool isCode, size_t key); };
+
+	class CodeMsgs;
+	struct CodeMsgsFor {
+		CodeMsgs&t;
+		size_t pos;
+		CQ::CodeMsgs&operator*();
+		CQ::CodeMsgsFor&operator++();
+		bool operator!=(CQ::CodeMsgsFor&);
+		CodeMsgsFor(CodeMsgs&t, int pos);
 	};
 	//消息解析
-	class CodeMsgs : public
-		std::vector<CodeMsg> 
-	{
+	class CodeMsgs {
+		std::vector<CodeMsg> msglist;
 		std::string txt;
-		int thismsg;//指针
+		size_t thismsg=0;//指针
 		void decod();//解码
+		bool find(std::string &s,int);
+		bool is(std::string &s, int);
 	public:
 		CodeMsgs(std::string);
 
-		char* at(int);
+		//char* at(int);
 
 		//定位到指定段
-		CQ::CodeMsgs&operator[](int);
-
+		CQ::CodeMsgs&operator[](size_t);
+		CQ::CodeMsgs&operator++(int);
+		CQ::CodeMsgs&operator++();
+		CQ::CodeMsgs&operator--(int);
+		CQ::CodeMsgs&operator--();
+		CQ::CodeMsgs&operator-(size_t);
+		CQ::CodeMsgs&operator+(size_t);
+		//返回指针当前位置
+		int pos();
+		
 		//从当前位置开始搜索指定cq码
 		//如果存在,定位到指定段
 		//否则返回null,并且不会移动指针
-		CQ::CodeMsgs&find(std::string s);
+		bool find(std::string s);
 
 		//从当前位置开始反向搜索指定cq码
 		//如果存在,定位到指定段
 		//否则返回null,并且不会移动指针
-		CQ::CodeMsgs&listfind(std::string);
+		bool lastfind(std::string);
 
 
 		//判断是否是CQ码
@@ -55,7 +71,15 @@ namespace CQ {
 		//如果找不到键,则返回空字符
 		//如果不是,返回空字符
 		std::string get(std::string key);
+		std::vector<std::string> keys();
+		
+		CQ::CodeMsgsFor begin();
+		CQ::CodeMsgsFor end();
+
+		void debug();
+
 	};
+
 	struct code {
 		//[CQ:image,file={1}] - 发送自定义图片
 		//文件以 酷Q目录\data\image\ 为基础
