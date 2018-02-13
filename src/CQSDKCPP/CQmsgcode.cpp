@@ -21,7 +21,7 @@ std::string CQ::code::image(std::string file)
 
 std::string CQ::code::record(std::string fileurl, bool magic)
 {
-	string s = std::string("[CQ:record,file=") + fileurl;
+	string s = std::string("[CQ:record,file=") + msg_encode(fileurl,true);
 	if (magic)s += ",magic=true";
 	return s += "]";
 }
@@ -39,6 +39,21 @@ std::string CQ::code::face(CQ::face face)
 std::string CQ::code::at(long long QQ)
 {
 	return std::string("[CQ:at,qq=") + to_string(QQ) + "]";
+}
+
+std::string CQ::code::effect(std::string type, int id, std::string content)
+{
+	return std::string("[CQ:effect,type=") + type + ",id=" + to_string(id) + ",content=" + msg_encode(content,true) + "]";
+}
+
+std::string CQ::code::sign(std::string title, std::string imageUrl)
+{
+	return std::string("[CQ:sign,title=") + msg_encode(title, true) + ",image=" + msg_encode(imageUrl, true) + "]";
+}
+
+std::string CQ::code::anonymous(bool ignore)
+{
+	return std::string(ignore ? "[CQ:anonymous,ignore=true]" : "[CQ:anonymous]");
 }
 
 
@@ -187,12 +202,16 @@ bool CQ::CodeMsgs::isCQcode()
 
 bool CQ::CodeMsgs::is(std::string s)
 {
-	return is(s, thismsg);
+	return isCQcode() ? is(s, thismsg) : false;
 }
 
 std::string CQ::CodeMsgs::get()
 {
-	return string(&txt[msglist[thismsg].key]);
+	string t(&txt[msglist[thismsg].key]);
+	if (!isCQcode()) {
+		t=msg_decode(t);
+	}
+	return t;
 }
 
 std::string CQ::CodeMsgs::get(std::string key)
@@ -209,8 +228,9 @@ std::string CQ::CodeMsgs::get(std::string key)
 						break;
 					}
 				}
-				if(b)
-					return string(&txt[codearg.value]);
+				if (b) {
+					return msg_decode(string(&txt[codearg.value]), true);
+				}
 			}
 		}
 	}

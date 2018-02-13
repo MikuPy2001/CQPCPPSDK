@@ -31,6 +31,7 @@ int main()
 	cout << endl;
 	if (m[0].find("sign")) {
 		cout << "sign find" << endl;
+		cout << "sign find" << endl;
 	}
 	else {
 		cout << "sign no find" << endl;

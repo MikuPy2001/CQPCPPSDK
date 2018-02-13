@@ -2,7 +2,12 @@
 #ifndef sqlitetool
 #define sqlitetool
 
-char* U(const char* strGbk);//GBKתUTF-8
-char* G(const char* strUtf8);//UTF-8תGBK
+//gbk转UTF-8
+//回传的char*自行销毁
+char* U(const char* strGbk);
+
+							//UTF-8转gbk  
+							//回传的char*自行销毁
+char* G(const char* strUtf8);
 
 #endif

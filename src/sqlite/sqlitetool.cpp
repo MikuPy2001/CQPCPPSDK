@@ -8,7 +8,6 @@
 
 using namespace std;
 
-char*strUtf8;
 //gbk转UTF-8
 //回传的char*自行销毁
 char* U(const char* strGbk)//传入的strGbk是GBK编码  

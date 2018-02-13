@@ -33,8 +33,6 @@ namespace CQ {
 	public:
 		CodeMsgs(std::string);
 
-		//char* at(int);
-
 		//定位到指定段
 		CQ::CodeMsgs&operator[](size_t);
 		CQ::CodeMsgs&operator++(int);
@@ -102,6 +100,7 @@ namespace CQ {
 		static std::string effect(std::string type, int id, std::string content);
 
 		//[CQ:sign,title=晒幸福,image=http://pub.idqqimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
+		static std::string sign(std::string title, std::string imageUrl);
 
 		//[CQ:hb, title = 恭喜发财] - 红包(只限收,不能发)
 
@@ -126,6 +125,8 @@ namespace CQ {
 		//[CQ:anonymous,ignore={1}] - 匿名发消息(仅支持群消息使用)
 		//必须在消息最开头
 		//ignore为true时,如果发送失败则转为普通消息
+		static std::string anonymous(bool ignore);
+
 
 		//[CQ:music,type={1},id={2}] - 发送音乐
 		//type为音乐平台,支持qq、163、xiami

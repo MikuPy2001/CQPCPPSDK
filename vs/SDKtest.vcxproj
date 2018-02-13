@@ -32,7 +32,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDKtest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
-    <ProjectName>cn.whatcraft.MikuPy2001.SDKtest</ProjectName>
+    <ProjectName>cn.MikuPy2001.SDKtest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

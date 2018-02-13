@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDK", "SDK.vcxproj", "{2869DBD7-ECBE-462D-9A46-B604DD992C22}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cn.whatcraft.MikuPy2001.SDKtest", "SDKtest.vcxproj", "{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cn.MikuPy2001.SDKtest", "SDKtest.vcxproj", "{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2869DBD7-ECBE-462D-9A46-B604DD992C22} = {2869DBD7-ECBE-462D-9A46-B604DD992C22}
 	EndProjectSection
@@ -14,6 +14,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test.vcxproj", "{4B
 	ProjectSection(ProjectDependencies) = postProject
 		{98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D} = {98DBCAFF-D0E0-4DB7-8D81-3EE0A8167D6D}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cn.MikuPy2001.PYruntime", "PYruntime.vcxproj", "{514BE496-9021-44E1-A842-24ADFDE6BE6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,14 @@ Global
 		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x64.Build.0 = Release|x64
 		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x86.ActiveCfg = Release|Win32
 		{4B2DD493-D132-4716-86CA-651A4803C422}.Release|x86.Build.0 = Release|Win32
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Debug|x64.ActiveCfg = Debug|x64
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Debug|x64.Build.0 = Debug|x64
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Debug|x86.ActiveCfg = Debug|Win32
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Debug|x86.Build.0 = Debug|Win32
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Release|x64.ActiveCfg = Release|x64
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Release|x64.Build.0 = Release|x64
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Release|x86.ActiveCfg = Release|Win32
+		{514BE496-9021-44E1-A842-24ADFDE6BE6A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
