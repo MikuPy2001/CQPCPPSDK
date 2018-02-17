@@ -1,8 +1,8 @@
 // test.cpp : 定义控制台应用程序的入口点。
 //
-#include "..\APPINFO.h"
-#include "..\CQSDK\CQMsgCode.h"
-#include<iostream>
+
+#include <CQMsgCode.h>
+#include <iostream>
 using namespace std;
 using namespace CQ;
 

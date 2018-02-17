@@ -1,3 +1,5 @@
+#include "..\CQSDK\bufstream.h"
+#include "..\CQSDK\bufstream.h"
 
 /*此文件是下面三个头文件的实现*/
 #include "..\CQSDK\CQAPI_EX.h"
@@ -78,6 +80,14 @@ CQstream & CQ::CQstream::append(const size_t & i) { buf += to_string(i); return 
 
 CQstream & CQ::CQstream::operator<<(const size_t & i) { return (*this).append(i); }
 
+CQstream & CQ::CQstream::append(const double & i) { buf += to_string(i); return *this; }
+
+CQstream & CQ::CQstream::operator<<(const double & i) { return (*this).append(i); }
+
+CQstream & CQ::CQstream::append(const long & i) { buf += to_string(i); return *this; }
+
+CQstream & CQ::CQstream::operator<<(const long & i) { return (*this).append(i); }
+
 CQstream & CQ::CQstream::append(const long long & l) { buf += to_string(l); return *this; }
 
 CQstream & CQ::CQstream::operator<<(const long long & l) { return (*this).append(l); }
@@ -88,13 +98,13 @@ CQstream & CQ::CQstream::operator<<(const char * c) { return (*this).append(c); 
 
 CQstream & CQ::CQstream::operator<<(void(*control)(CQstream &)) { control(*this); return *this; }
 
-void CQ::CQstream::flush() { send();  }
+void CQ::CQstream::flush() { send(); }
 
 inline CQ::CQstream::~CQstream() {}
 
 inline CQ::logstream::logstream(std::string title, int Log_flag) : flag(Log_flag), title(title) {}
 
-void CQ::logstream::send() {if (buf.size() <= 0)return; addLog(flag, title.c_str(), buf.c_str()); }
+void CQ::logstream::send() { if (buf.size() <= 0)return; addLog(flag, title.c_str(), buf.c_str()); }
 
 CQ::msg::msg(long long ID, msgtype Type) : ID(ID), subType(Type) {}
 

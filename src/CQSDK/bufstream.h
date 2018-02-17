@@ -19,11 +19,12 @@ namespace CQ {
 		virtual	CQstream & operator <<(const int & i);
 		virtual	CQstream & append(const  size_t & i);
 		virtual	CQstream & operator <<(const size_t & i);
-
-		//长整数(Q号什么的)
+		virtual	CQstream & append(const double & i);
+		virtual	CQstream & operator <<(const double & i);
+		virtual	CQstream & append(const long & i);
+		virtual	CQstream & operator <<(const long & i);
 		virtual	CQstream & append(const long long & l);
 		virtual	CQstream & operator <<(const long long & l);
-
 
 		//特殊控制符
 		virtual	CQstream & operator <<(void (*control)(CQstream &));

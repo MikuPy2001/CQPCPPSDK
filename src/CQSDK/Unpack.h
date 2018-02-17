@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include <vector>
+#include <string>
 
-void show(void*t, int len);
+std::string dump(void*t, int len);
 class Unpack
 {
 	std::vector<unsigned char> buff;

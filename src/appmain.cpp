@@ -1,16 +1,24 @@
 #include "string"
 
-#include "CQSDK/CQconstant.h"
-#include "CQSDK/CQAPI_EX.h"
-#include "CQSDK/CQEVE_GroupMsg.h"
-#include "CQSDK/CQEVE_PrivateMsg.h"
-#include "CQSDK\CQLogger.h"
+//#include "CQSDK/CQconstant.h"
+//#include "CQSDK/CQAPI_EX.h"
+//#include "CQSDK/CQEVE_GroupMsg.h"
+//#include "CQSDK/CQEVE_PrivateMsg.h"
+//#include "CQSDK/CQLogger.h"
+
+#include <CQconstant.h>
+#include <CQAPI_EX.h>
+#include <CQEVE_GroupMsg.h>
+#include <CQEVE_PrivateMsg.h>
+#include <CQLogger.h>
+
 #include "APPINFO.h"
 
 using namespace std;
 using namespace CQ;
 
-EVE_PrivateMsg_EX(privateMsg)
+
+EVE_PrivateMsg_EX(privateMsgEx)
 {
 	static logger log("Ë½ÁÄÊÂ¼þ");
 	try

@@ -5,16 +5,17 @@
 
 using namespace std;
 //打印内存数据
-void show(void*t, int len)
+string dump(void*t, int len)
 {
+	string s;
 	auto p = static_cast<unsigned char*>(t);
-	cout << "{";
+	s += "{";
 	for (auto i = 0; i < len; ++i)
 	{
-		cout << static_cast<int>(p[i]);
-		if (i != len - 1)cout << ", ";
+		s += to_string(static_cast<int>(p[i]));
+		if (i + 1 < len)s += ", ";
 	}
-	cout << "}" << endl;
+	return s += "}";
 }
 //内存翻转
 unsigned char* Flip(unsigned char*str, int len)
@@ -138,7 +139,7 @@ Unpack& Unpack::add(unsigned char* i, short len)
 
 std::vector<unsigned char> Unpack::getchars()
 {
-	auto len = getshort();
+	size_t len = getshort();
 	if (buff.size() < len)return vector<unsigned char>();
 
 	auto tep = vector<unsigned char>(buff.begin(), buff.begin() + len);
