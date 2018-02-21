@@ -6,7 +6,6 @@
 //#include "CQSDK/CQEVE_PrivateMsg.h"
 //#include "CQSDK/CQLogger.h"
 
-#include <CQconstant.h>
 #include <CQAPI_EX.h>
 #include <CQEVE_GroupMsg.h>
 #include <CQEVE_PrivateMsg.h>

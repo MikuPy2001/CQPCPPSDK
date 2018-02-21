@@ -27,7 +27,7 @@ namespace CQ {
 		virtual	CQstream & operator <<(const long long & l);
 
 		//ÌØÊâ¿ØÖÆ·û
-		virtual	CQstream & operator <<(void (*control)(CQstream &));
+		virtual	CQstream & operator <<(void(*control)(CQstream &));
 		virtual	void send() = 0;
 		virtual	void flush();
 

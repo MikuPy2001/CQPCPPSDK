@@ -14,5 +14,6 @@
 #define CQAPPID "cn.MikuPy2001.PYruntime"
 
 // TODO: 在此处引用程序需要的其他头文件
-#include <CQEVE_ALL.h>
 #include <Python.h>
+#include <CQEVE_ALL.h>
+#include <CQAPI_EX.h>

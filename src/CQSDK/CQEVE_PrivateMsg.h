@@ -28,23 +28,21 @@ font		字体
 	}																							\
 	void Name(CQ::EVEPrivateMsg & eve)
 
-
-namespace CQ{
-    struct EVEPrivateMsg :public EVEMsg
-    {
-
+namespace CQ {
+	struct EVEPrivateMsg :public EVEMsg
+	{
 		EVEPrivateMsg(int subType, int msgId, long long fromQQ, const char* msg, int Font);
 
-        //来自好友
+		//来自好友
 		bool fromPrivate() const;
 
-        //来自在线状态
+		//来自在线状态
 		bool fromOnlineStatus() const;
 
-        //来自群临时
+		//来自群临时
 		bool fromGroup() const;
 
-        //来自讨论组临时
+		//来自讨论组临时
 		bool fromDiscuss() const;
 
 		// 通过 EVEMsg 继承
@@ -53,6 +51,5 @@ namespace CQ{
 		virtual int sendMsg(const char *) const override;
 
 		virtual int sendMsg(std::string) const override;
-
 	};
 }

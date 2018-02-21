@@ -22,11 +22,12 @@
     <ClCompile Include="..\src\PYruntime\cqeve.cpp" />
     <ClCompile Include="..\src\PYruntime\dllmain.cpp" />
     <ClCompile Include="..\src\PYruntime\loadruntime.cpp" />
+    <ClCompile Include="..\src\PYruntime\pyapi.cpp" />
     <ClCompile Include="..\src\PYruntime\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\PYruntime\cqeve.h" />
-    <ClInclude Include="..\src\PYruntime\loadruntime.h" />
+    <ClInclude Include="..\src\PYruntime\init.h" />
     <ClInclude Include="..\src\PYruntime\stdafx.h" />
     <ClInclude Include="..\src\PYruntime\targetver.h" />
   </ItemGroup>

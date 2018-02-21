@@ -1,9 +1,7 @@
 #include "..\CQSDK\bufstream.h"
-#include "..\CQSDK\bufstream.h"
 
 /*此文件是下面三个头文件的实现*/
 #include "..\CQSDK\CQAPI_EX.h"
-#include "..\CQSDK\bufstream.h"
 #include "..\CQSDK\CQLogger.h"
 #include "..\CQSDK\CQMsgSend.h"
 

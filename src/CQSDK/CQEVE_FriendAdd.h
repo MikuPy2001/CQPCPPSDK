@@ -25,7 +25,6 @@ fromQQ À´Ô´QQ
 
 namespace CQ
 {
-	struct EVEFriendAdd:public EVE{
-
+	struct EVEFriendAdd :public EVE {
 	};
 }

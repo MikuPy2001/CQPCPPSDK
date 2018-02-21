@@ -7,8 +7,7 @@
 #define DEBUGINFO "文件:" << __FILE__ << ",行数:" << __LINE__ << ",输出:"
 namespace CQ
 {
-
-	class logstream: public CQstream
+	class logstream : public CQstream
 	{
 		int flag;
 		std::string title;
@@ -17,7 +16,6 @@ namespace CQ
 
 		// 通过 CQstream 继承
 		virtual void send() override;
-
 	};
 
 	class logger

@@ -9,12 +9,12 @@ class Unpack
 public:
 	Unpack();
 	Unpack(const char*);
-    Unpack(std::vector<unsigned char>);
+	Unpack(std::vector<unsigned char>);
 	Unpack(std::string);
 
 	Unpack&setData(const char* i, int len);
 	Unpack&clear();
-    int len() const;
+	int len() const;
 
 	Unpack&add(int i);//添加一个整数
 	int getInt();//弹出一个整数

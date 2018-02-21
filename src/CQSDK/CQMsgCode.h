@@ -26,9 +26,9 @@ namespace CQ {
 	class CodeMsgs {
 		std::vector<CodeMsg> msglist;
 		std::string txt;
-		size_t thismsg=0;//指针
+		size_t thismsg = 0;//指针
 		void decod();//解码
-		bool find(std::string &s,int);
+		bool find(std::string &s, int);
 		bool is(std::string &s, int);
 	public:
 		CodeMsgs(std::string);
@@ -43,7 +43,7 @@ namespace CQ {
 		CQ::CodeMsgs&operator+(size_t);
 		//返回指针当前位置
 		int pos();
-		
+
 		//从当前位置开始搜索指定cq码
 		//如果存在,定位到指定段
 		//否则返回null,并且不会移动指针
@@ -53,7 +53,6 @@ namespace CQ {
 		//如果存在,定位到指定段
 		//否则返回null,并且不会移动指针
 		bool lastfind(std::string);
-
 
 		//判断是否是CQ码
 		bool isCQcode();
@@ -70,12 +69,11 @@ namespace CQ {
 		//如果不是,返回空字符
 		std::string get(std::string key);
 		std::vector<std::string> keys();
-		
+
 		CQ::CodeMsgsFor begin();
 		CQ::CodeMsgsFor end();
 
 		void debug();
-
 	};
 
 	struct code {
@@ -127,7 +125,6 @@ namespace CQ {
 		//ignore为true时,如果发送失败则转为普通消息
 		static std::string anonymous(bool ignore);
 
-
 		//[CQ:music,type={1},id={2}] - 发送音乐
 		//type为音乐平台,支持qq、163、xiami
 		//id即为音乐id
@@ -146,6 +143,5 @@ namespace CQ {
 		//content为分享的简介，建议30字以内。该参数可被忽略。
 		//image为分享的图片链接。若参数为空或被忽略，则显示默认图片。
 		//!链接分享只能作为单独的一条消息发送
-
 	};
 }

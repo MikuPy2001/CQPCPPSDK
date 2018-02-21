@@ -5,7 +5,6 @@ Written by MukiPy2001 & Thanks for the help of orzFly and Coxxs
 */
 #pragma once
 
-
 #define CQAPIVER 9
 #define CQAPIVERTEXT "9"
 

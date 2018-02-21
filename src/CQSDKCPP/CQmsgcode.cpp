@@ -10,7 +10,7 @@ size_t strlen(string&s, size_t st) {
 	while (s[st] != '\0' && st < s.size()) {
 		st++; len++;
 	}
-	
+
 	return len;
 }
 
@@ -21,7 +21,7 @@ std::string CQ::code::image(std::string file)
 
 std::string CQ::code::record(std::string fileurl, bool magic)
 {
-	string s = std::string("[CQ:record,file=") + msg_encode(fileurl,true);
+	string s = std::string("[CQ:record,file=") + msg_encode(fileurl, true);
 	if (magic)s += ",magic=true";
 	return s += "]";
 }
@@ -43,7 +43,7 @@ std::string CQ::code::at(long long QQ)
 
 std::string CQ::code::effect(std::string type, int id, std::string content)
 {
-	return std::string("[CQ:effect,type=") + type + ",id=" + to_string(id) + ",content=" + msg_encode(content,true) + "]";
+	return std::string("[CQ:effect,type=") + type + ",id=" + to_string(id) + ",content=" + msg_encode(content, true) + "]";
 }
 
 std::string CQ::code::sign(std::string title, std::string imageUrl)
@@ -55,7 +55,6 @@ std::string CQ::code::anonymous(bool ignore)
 {
 	return std::string(ignore ? "[CQ:anonymous,ignore=true]" : "[CQ:anonymous]");
 }
-
 
 void CQ::CodeMsgs::decod()
 {
@@ -100,7 +99,7 @@ void CQ::CodeMsgs::decod()
 		}
 	}
 	//Í³¼Ækeylen
-	for (size_t i = 0; i < msglist.size();i++) {
+	for (size_t i = 0; i < msglist.size(); i++) {
 		auto&code = msglist[i];
 		code.keylen = strlen(txt, code.key);
 		if (code.isCode) {
@@ -130,8 +129,8 @@ CQ::CodeMsgs::CodeMsgs(std::string s)
 
 CQ::CodeMsgs & CQ::CodeMsgs::operator[](size_t i)
 {
-	if (i >= 0 && i<msglist.size())
-	thismsg = i;
+	if (i >= 0 && i < msglist.size())
+		thismsg = i;
 	return *this;
 }
 
@@ -209,7 +208,7 @@ std::string CQ::CodeMsgs::get()
 {
 	string t(&txt[msglist[thismsg].key]);
 	if (!isCQcode()) {
-		t=msg_decode(t);
+		t = msg_decode(t);
 	}
 	return t;
 }
@@ -219,7 +218,7 @@ std::string CQ::CodeMsgs::get(std::string key)
 	auto&msg = msglist[thismsg];
 	if (msg.isCode) {
 		for (size_t i = 0; i < msg.size(); i++) {
-			auto&codearg=msg[i];
+			auto&codearg = msg[i];
 			if (codearg.keylen == key.size()) {
 				bool b = true;
 				for (size_t i = 0; i < key.size(); i++) {
@@ -260,7 +259,6 @@ CQ::CodeMsgsFor CQ::CodeMsgs::end()
 	return CodeMsgsFor(*this, msglist.size());
 }
 
-
 CQ::CodeMsg::CodeMsg(bool isCode, size_t key) :isCode(isCode), key(key) {}
 
 CQ::OneCodeMsg::OneCodeMsg(size_t key) : key(key) {}
@@ -279,7 +277,6 @@ bool CQ::CodeMsgs::is(std::string&s, int pos) {
 	return false;
 }
 
-
 CQ::CodeMsgs & CQ::CodeMsgsFor::operator*()
 {
 	return t[pos];
@@ -296,8 +293,7 @@ bool CQ::CodeMsgsFor::operator!=(CQ::CodeMsgsFor & t)
 	return t.pos != pos;
 }
 
-CQ::CodeMsgsFor::CodeMsgsFor(CodeMsgs & t, int pos):t(t),pos(pos){}
-
+CQ::CodeMsgsFor::CodeMsgsFor(CodeMsgs & t, int pos) :t(t), pos(pos) {}
 
 #include <iostream>
 void CQ::CodeMsgs::debug()

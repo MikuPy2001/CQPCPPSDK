@@ -1,7 +1,6 @@
 ﻿#include "..\CQSDK\Unpack.h"
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 //打印内存数据
@@ -21,7 +20,7 @@ string dump(void*t, int len)
 unsigned char* Flip(unsigned char*str, int len)
 {
 	int f = 0; --len; unsigned char p;
-	while (f<len)
+	while (f < len)
 	{
 		p = str[len];
 		str[len] = str[f];
@@ -35,7 +34,7 @@ unsigned char* Flip(unsigned char*str, int len)
 template<typename ClassType>
 unsigned char * toBin(ClassType & i)
 {
-    return Flip(reinterpret_cast<unsigned char*>(&i), sizeof(ClassType));
+	return Flip(reinterpret_cast<unsigned char*>(&i), sizeof(ClassType));
 }
 //unsigned char * Int2Bin(int&i)
 //{
@@ -48,7 +47,7 @@ Unpack& Unpack::setData(const char* i, int len)
 	return *this;
 }
 
-Unpack::Unpack(){}
+Unpack::Unpack() {}
 
 Unpack::Unpack(const char* data)
 {
@@ -57,7 +56,7 @@ Unpack::Unpack(const char* data)
 
 Unpack::Unpack(std::vector<unsigned char> data)
 {
-    buff = data;
+	buff = data;
 }
 
 Unpack::Unpack(std::string data)
@@ -73,7 +72,7 @@ Unpack& Unpack::clear()
 
 int Unpack::len() const
 {
-    return buff.size();
+	return buff.size();
 }
 
 Unpack& Unpack::add(int i)
@@ -95,7 +94,7 @@ int Unpack::getInt()
 
 Unpack& Unpack::add(long long i)
 {
-    auto t = toBin<long long>(i);
+	auto t = toBin<long long>(i);
 	buff.insert(buff.end(), t, t + sizeof(long long));
 	return *this;
 }
@@ -112,7 +111,7 @@ long long Unpack::getLong()
 
 Unpack& Unpack::add(short i)
 {
-    auto t = toBin<short>(i);
+	auto t = toBin<short>(i);
 	buff.insert(buff.end(), t, t + sizeof(short));
 	return *this;
 }
@@ -159,14 +158,14 @@ Unpack& Unpack::add(string i)
 		i = i.substr(0, 32767);
 	}
 
-	add((unsigned char*)i.data(), (short) i.size());
+	add((unsigned char*)i.data(), (short)i.size());
 
 	return *this;
 }
 
 string Unpack::getstring()
 {
-	auto tep = getchars(); 
+	auto tep = getchars();
 	if (tep.size() == 0)return "";
 
 	tep.push_back(static_cast<char>(0));
@@ -179,19 +178,19 @@ Unpack & Unpack::add(Unpack & i)
 	return *this;
 }
 
-Unpack Unpack::getUnpack(){	return Unpack(getchars());}
+Unpack Unpack::getUnpack() { return Unpack(getchars()); }
 
 std::string Unpack::getAll() {
 	string ret;
-	for (auto b : buff) 
-		ret += b;	
+	for (auto b : buff)
+		ret += b;
 	return ret;
 }
 
 void Unpack::show()
 {
 	string out;	auto len = 0;
-	for (auto c : buff)	{ out.append(to_string(static_cast<int>(c))).append(", "); ++len; }
+	for (auto c : buff) { out.append(to_string(static_cast<int>(c))).append(", "); ++len; }
 	out = to_string(len).append("{").append(out.substr(0, out.size() - 2)).append("}");
 	cout << out.data() << endl;
 }
