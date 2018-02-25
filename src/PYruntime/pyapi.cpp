@@ -7,13 +7,19 @@ typedef PyObject* PYO;
 #define SPO static PYO 
 
 SPO addLog(PYO self, PYO args) {
+	PYO res=NULL;
+	Py_BEGIN_ALLOW_THREADS
+
 	整数型 优先级;
 	文本型 类型;
 	文本型 内容;
 
-	if (!PyArg_ParseTuple(args, "iss", &优先级,&类型,&内容)) {
-		return NULL;
+	if (!PyArg_ParseTuple(args, "iss", &优先级, &类型, &内容)) {
+
 	}
+
+	Py_END_ALLOW_THREADS
+	return res;
 }
 SPO deleteMsg(PYO self, PYO args) {}
 SPO getAppDirectory(PYO self, PYO args) {}
