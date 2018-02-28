@@ -1,11 +1,5 @@
 #include "string"
 
-//#include "CQSDK/CQconstant.h"
-//#include "CQSDK/CQAPI_EX.h"
-//#include "CQSDK/CQEVE_GroupMsg.h"
-//#include "CQSDK/CQEVE_PrivateMsg.h"
-//#include "CQSDK/CQLogger.h"
-
 #include <CQAPI_EX.h>
 #include <CQEVE_GroupMsg.h>
 #include <CQEVE_PrivateMsg.h>
@@ -15,7 +9,6 @@
 
 using namespace std;
 using namespace CQ;
-
 
 EVE_PrivateMsg_EX(privateMsgEx)
 {
