@@ -24,6 +24,9 @@
     <ClCompile Include="src\example_winSpeak.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\example_获取进群邀请人.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\APPINFO.h">

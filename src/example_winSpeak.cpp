@@ -1,8 +1,10 @@
 #include <CQEVE_GroupMsg.h>
 #include <winSpeak.h>
+#include <CQMsgCode.h>
 
 #include <string>
 using namespace std;
+using namespace CQ;
 
 EVE_GroupMsg_EX(Speak) {
 	if (eve.message[0] != '.')return;
@@ -16,4 +18,8 @@ EVE_GroupMsg_EX(Speak) {
 
 	string s(pBuf);
 	s += "\\data\\record\\out.wav";
+
+	Speak_to_wav_file(s, txt);
+
+	eve.sendMsg() << code::record("out.wav") << send;
 }

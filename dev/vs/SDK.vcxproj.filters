@@ -22,6 +22,9 @@
     <Filter Include="INItool">
       <UniqueIdentifier>{00c8f569-2a36-4666-a2fa-62661568b14a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="winSpeak">
+      <UniqueIdentifier>{d798b845-c3a8-442c-a79a-5c6d0eb1e972}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CQSDKCPP\CQmsgcode.cpp">
@@ -50,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="..\ini\INItool.cpp">
       <Filter>INItool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\winSpeak\winSpeak.cpp">
+      <Filter>winSpeak</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

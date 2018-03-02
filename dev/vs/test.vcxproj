@@ -13,7 +13,6 @@
   <ItemGroup>
     <ClCompile Include="..\sqlite\sqlitetool.cpp" />
     <ClCompile Include="..\test_main.cpp" />
-    <ClCompile Include="..\winSpeak\winSpeak.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\sqlite\sqlite3.lib" />

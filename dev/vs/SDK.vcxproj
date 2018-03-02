@@ -20,6 +20,7 @@
     <ClCompile Include="..\CQSDKCPP\debug.cpp" />
     <ClCompile Include="..\CQSDKCPP\Unpack.cpp" />
     <ClCompile Include="..\ini\INItool.cpp" />
+    <ClCompile Include="..\winSpeak\winSpeak.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\inculde\bufstream.h" />

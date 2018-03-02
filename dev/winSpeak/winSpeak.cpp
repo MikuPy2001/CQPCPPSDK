@@ -8,9 +8,9 @@
 
 using namespace std;
 
-wchar_t*TW(char*file) {
+wchar_t*TW(string file) {
 	USES_CONVERSION;
-	wchar_t*t = A2W(file);
+	wchar_t*t = A2W(file.c_str());
 	wchar_t*w = new wchar_t[wcslen(t) + 1];
 	wcscpy(w, t);
 	return w;
@@ -32,13 +32,11 @@ bool Speak_init() {
 	return true;
 }
 
-bool Speak_to_wav_file(char* fileA, char*stringA) {
+bool Speak_to_wav_file(string file, string wantSay) {
 	bool res = false;
 
-	auto file = TW(fileA);
-	auto string = TW(stringA);
-
-	cout << file << endl;
+	auto _file = TW(file);
+	auto _wantSay = TW(wantSay);
 
 	CSpStreamFormat OriginalFmt;//创建一个输出流，绑定到wav文件
 	CComPtr<ISpStream> cpWavStream;//wav音频流
@@ -52,7 +50,7 @@ bool Speak_to_wav_file(char* fileA, char*stringA) {
 		if (SUCCEEDED(hr))
 		{
 			// 使用sphelper.h中提供的函数创建 wav 文件
-			hr = SPBindToFile(file, SPFM_CREATE_ALWAYS, &cpWavStream, &OriginalFmt.FormatId(), OriginalFmt.WaveFormatExPtr());
+			hr = SPBindToFile(_file, SPFM_CREATE_ALWAYS, &cpWavStream, &OriginalFmt.FormatId(), OriginalFmt.WaveFormatExPtr());
 
 			if (SUCCEEDED(hr))
 			{
@@ -60,7 +58,7 @@ bool Speak_to_wav_file(char* fileA, char*stringA) {
 				pISpVoice->SetOutput(cpWavStream, TRUE);
 
 				//开始朗读
-				pISpVoice->Speak(string, SPF_IS_NOT_XML, 0);
+				pISpVoice->Speak(_wantSay, SPF_IS_NOT_XML, 0);
 
 				//把流设置回去
 				pISpVoice->SetOutput(cpOldStream, FALSE);
@@ -81,7 +79,5 @@ bool Speak_to_wav_file(char* fileA, char*stringA) {
 		cout << "GetOutputStream" << endl;
 	}
 
-	delete file;
-	delete string;
 	return res;
 }

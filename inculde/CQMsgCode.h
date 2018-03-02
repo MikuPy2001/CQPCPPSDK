@@ -83,7 +83,7 @@ namespace CQ {
 
 		//[CQ:record,file={1},magic={2}] - 发送语音
 		//文件以 酷Q目录\data\record\ 为基础
-		static std::string record(std::string fileurl, bool magic);
+		static std::string record(std::string fileurl, bool magic = false);
 
 		//[CQ:face,id={1}] - QQ表情
 		static std::string face(int faceid);

@@ -1,6 +1,7 @@
 #pragma once
 #include "cqdefine.h"
 #include "CQEVEBasic.h"
+#include "CQMsgSend.h"
 
 #include <string>
 #include <map>
