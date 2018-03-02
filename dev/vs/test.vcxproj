@@ -10,6 +10,17 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sqlite\sqlitetool.cpp" />
+    <ClCompile Include="..\test_main.cpp" />
+    <ClCompile Include="..\winSpeak\winSpeak.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\sqlite\sqlite3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inculde\winSpeak.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4B2DD493-D132-4716-86CA-651A4803C422}</ProjectGuid>
@@ -79,6 +90,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <DelayLoadDLLs>sqlite3.dll;CQP.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

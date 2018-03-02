@@ -19,7 +19,7 @@
     <Filter Include="头文件\聊天">
       <UniqueIdentifier>{2cc0f095-829e-4c3a-9674-ee5cd12f3336}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\INItool">
+    <Filter Include="INItool">
       <UniqueIdentifier>{00c8f569-2a36-4666-a2fa-62661568b14a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -49,7 +49,7 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\ini\INItool.cpp">
-      <Filter>源文件\INItool</Filter>
+      <Filter>INItool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="..\..\inculde\Unpack.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inculde\INItool.h">
+      <Filter>INItool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,3 @@
-#include "string"
-
 #include <CQAPI_EX.h>
 #include <CQEVE_GroupMsg.h>
 #include <CQEVE_PrivateMsg.h>
@@ -7,27 +5,9 @@
 
 #include "APPINFO.h"
 
+#include <string>
 using namespace std;
 using namespace CQ;
-
-EVE_PrivateMsg_EX(privateMsgEx)
-{
-	static logger log("私聊事件");
-	try
-	{
-		log.Info()
-			<< "{名称: " << eve.font.名称
-			<< ", 字号:" << eve.font.字号
-			<< ", 颜色:" << eve.font.颜色
-			<< ", 样式:" << eve.font.样式
-			<< ", 气泡:" << eve.font.气泡
-			<< "}" << send;
-	}
-	catch (...)
-    {
-        log.Info("私聊出现异常");
-	}
-}
 
 EVE_Disable(Disable)
 {
@@ -46,12 +26,4 @@ EVE_Menu(menu1)
 	return 0;
 }
 
-EVE_Menu(menu2)
-{
-	addLog(Log_Info, "菜单事件", "菜单2被点击");
-
-	return 0;
-}
-
 MUST_AppInfo_RETURN(CQAPPID)
-

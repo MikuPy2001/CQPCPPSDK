@@ -13,17 +13,17 @@ namespace CQ {
 	//一条cq消息或者普通消息
 	struct CodeMsg : std::vector<OneCodeMsg> { public: bool isCode; size_t key, keylen = 0; CodeMsg(bool isCode, size_t key); };
 
-	class CodeMsgs;
+	class MsgCode;
 	struct CodeMsgsFor {
-		CodeMsgs&t;
+		MsgCode&t;
 		size_t pos;
-		CQ::CodeMsgs&operator*();
+		CQ::MsgCode&operator*();
 		CQ::CodeMsgsFor&operator++();
 		bool operator!=(CQ::CodeMsgsFor&);
-		CodeMsgsFor(CodeMsgs&t, int pos);
+		CodeMsgsFor(MsgCode&t, int pos);
 	};
 	//消息解析
-	class CodeMsgs {
+	class MsgCode {
 		std::vector<CodeMsg> msglist;
 		std::string txt;
 		size_t thismsg = 0;//指针
@@ -31,16 +31,16 @@ namespace CQ {
 		bool find(std::string &s, int);
 		bool is(std::string &s, int);
 	public:
-		CodeMsgs(std::string);
+		MsgCode(std::string);
 
 		//定位到指定段
-		CQ::CodeMsgs&operator[](size_t);
-		CQ::CodeMsgs&operator++(int);
-		CQ::CodeMsgs&operator++();
-		CQ::CodeMsgs&operator--(int);
-		CQ::CodeMsgs&operator--();
-		CQ::CodeMsgs&operator-(size_t);
-		CQ::CodeMsgs&operator+(size_t);
+		CQ::MsgCode&operator[](size_t);
+		CQ::MsgCode&operator++(int);
+		CQ::MsgCode&operator++();
+		CQ::MsgCode&operator--(int);
+		CQ::MsgCode&operator--();
+		CQ::MsgCode&operator-(size_t);
+		CQ::MsgCode&operator+(size_t);
 		//返回指针当前位置
 		int pos();
 

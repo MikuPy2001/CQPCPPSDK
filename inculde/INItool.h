@@ -69,22 +69,29 @@ namespace ini{
         friend std::ostream & operator<<(std::ostream &out, INItool &t);
 
     public:
+		//从一个文件读取一个ini
         INItool(std::string filename);
         INItool() = default;
         ~INItool() = default;
 
-        //解析文本
+		//从字符串读取一个ini
         void load(std::string string);
 
-        //判断
+		//将ini保存到文件
+		bool save(std::string filename);
+
+
+		//是否有指定段
         bool has(std::string sectionsName);
 
-        //取
+        //取出指定段
         Sections& operator[](std::string sectionsName);
+		//取出指定段
         Sections& get(std::string sectionsName);
 
-        //删
+        //删除指定段及其下属所有键和值
         void del(std::string sectionsName);
     };
+	//将ini输入到流
     std::ostream & operator<<(std::ostream &out, INItool &t);
 }

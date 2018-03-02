@@ -56,7 +56,7 @@ std::string CQ::code::anonymous(bool ignore)
 	return std::string(ignore ? "[CQ:anonymous,ignore=true]" : "[CQ:anonymous]");
 }
 
-void CQ::CodeMsgs::decod()
+void CQ::MsgCode::decod()
 {
 	bool key = false;
 
@@ -121,61 +121,61 @@ void CQ::CodeMsgs::decod()
 	}*/
 }
 
-CQ::CodeMsgs::CodeMsgs(std::string s)
+CQ::MsgCode::MsgCode(std::string s)
 {
 	txt = s;
 	decod();
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator[](size_t i)
+CQ::MsgCode & CQ::MsgCode::operator[](size_t i)
 {
 	if (i >= 0 && i < msglist.size())
 		thismsg = i;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator++(int)
+CQ::MsgCode & CQ::MsgCode::operator++(int)
 {
 	if (thismsg + 1 < msglist.size())++thismsg;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator++()
+CQ::MsgCode & CQ::MsgCode::operator++()
 {
 	if (thismsg + 1 < msglist.size())++thismsg;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator--(int)
+CQ::MsgCode & CQ::MsgCode::operator--(int)
 {
 	if (thismsg > 0)--thismsg;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator--()
+CQ::MsgCode & CQ::MsgCode::operator--()
 {
 	if (thismsg > 0)--thismsg;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator-(size_t i)
+CQ::MsgCode & CQ::MsgCode::operator-(size_t i)
 {
 	if (thismsg - i >= 0)thismsg -= i;
 	return *this;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgs::operator+(size_t i)
+CQ::MsgCode & CQ::MsgCode::operator+(size_t i)
 {
 	if (thismsg + i < msglist.size())thismsg += i;
 	return *this;
 }
 
-int CQ::CodeMsgs::pos()
+int CQ::MsgCode::pos()
 {
 	return thismsg;
 }
 
-bool CQ::CodeMsgs::find(std::string&s, int k) {
+bool CQ::MsgCode::find(std::string&s, int k) {
 	for (auto pos = thismsg; pos < msglist.size(); pos += k) {
 		if (is(s, pos)) {
 			thismsg = pos;
@@ -184,27 +184,27 @@ bool CQ::CodeMsgs::find(std::string&s, int k) {
 	}
 	return false;
 }
-bool CQ::CodeMsgs::find(std::string s)
+bool CQ::MsgCode::find(std::string s)
 {
 	return find(s, 1);
 }
 
-bool CQ::CodeMsgs::lastfind(std::string s)
+bool CQ::MsgCode::lastfind(std::string s)
 {
 	return find(s, -1);
 }
 
-bool CQ::CodeMsgs::isCQcode()
+bool CQ::MsgCode::isCQcode()
 {
 	return msglist[thismsg].isCode;
 }
 
-bool CQ::CodeMsgs::is(std::string s)
+bool CQ::MsgCode::is(std::string s)
 {
 	return isCQcode() ? is(s, thismsg) : false;
 }
 
-std::string CQ::CodeMsgs::get()
+std::string CQ::MsgCode::get()
 {
 	string t(&txt[msglist[thismsg].key]);
 	if (!isCQcode()) {
@@ -213,7 +213,7 @@ std::string CQ::CodeMsgs::get()
 	return t;
 }
 
-std::string CQ::CodeMsgs::get(std::string key)
+std::string CQ::MsgCode::get(std::string key)
 {
 	auto&msg = msglist[thismsg];
 	if (msg.isCode) {
@@ -236,7 +236,7 @@ std::string CQ::CodeMsgs::get(std::string key)
 	return string();
 }
 
-std::vector<std::string> CQ::CodeMsgs::keys()
+std::vector<std::string> CQ::MsgCode::keys()
 {
 	std::vector<std::string> keys;
 	auto&msg = msglist[thismsg];
@@ -249,12 +249,12 @@ std::vector<std::string> CQ::CodeMsgs::keys()
 	return keys;
 }
 
-CQ::CodeMsgsFor CQ::CodeMsgs::begin()
+CQ::CodeMsgsFor CQ::MsgCode::begin()
 {
 	return CodeMsgsFor(*this, 0);
 }
 
-CQ::CodeMsgsFor CQ::CodeMsgs::end()
+CQ::CodeMsgsFor CQ::MsgCode::end()
 {
 	return CodeMsgsFor(*this, msglist.size());
 }
@@ -263,7 +263,7 @@ CQ::CodeMsg::CodeMsg(bool isCode, size_t key) :isCode(isCode), key(key) {}
 
 CQ::OneCodeMsg::OneCodeMsg(size_t key) : key(key) {}
 
-bool CQ::CodeMsgs::is(std::string&s, int pos) {
+bool CQ::MsgCode::is(std::string&s, int pos) {
 	CodeMsg&cm = msglist[pos];
 	if (cm.isCode) {
 		if (cm.keylen == s.size()) {
@@ -277,7 +277,7 @@ bool CQ::CodeMsgs::is(std::string&s, int pos) {
 	return false;
 }
 
-CQ::CodeMsgs & CQ::CodeMsgsFor::operator*()
+CQ::MsgCode & CQ::CodeMsgsFor::operator*()
 {
 	return t[pos];
 }
@@ -293,10 +293,10 @@ bool CQ::CodeMsgsFor::operator!=(CQ::CodeMsgsFor & t)
 	return t.pos != pos;
 }
 
-CQ::CodeMsgsFor::CodeMsgsFor(CodeMsgs & t, int pos) :t(t), pos(pos) {}
+CQ::CodeMsgsFor::CodeMsgsFor(MsgCode & t, int pos) :t(t), pos(pos) {}
 
 #include <iostream>
-void CQ::CodeMsgs::debug()
+void CQ::MsgCode::debug()
 {
 	for each (auto&var in msglist)
 	{

@@ -35,8 +35,7 @@ namespace CQ {
 	//发送赞 Auth=110
 	整数型 sendLike(长整数型 QQID, 整数型 times);
 
-	//取Cookies (慎用，此接口需要严格授权)
-	//Auth=20 慎用,此接口需要严格授权
+	//取Cookies,Auth=20 慎用,此接口需要严格授权
 	文本型 getCookies();
 
 	//接收语音
@@ -54,11 +53,9 @@ namespace CQ {
 	//Auth=20 即QQ网页用到的bkn/g_tk等 慎用,此接口需要严格授权
 	整数型 getCsrfToken();
 
-	//取应用目录
-	//返回的路径末尾带"\"
+	//取应用目录,返回的路径末尾带"\"
 	文本型 getAppDirectory();
 
-	//取登录QQ
 	//取登录QQ
 	长整数型 getLoginQQ();
 
