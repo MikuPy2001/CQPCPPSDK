@@ -6,11 +6,11 @@ using namespace std;
 using namespace CQ;
 
 EVE_Request_AddGroup_EX(AddGroup) {
-	if (eve.subType != 1)return;//ä¸æ˜¯åˆ«äººè¯·æ±‚å…¥ç¾¤ï¼Œå¿½ç•¥
+	if (eve.subType != 1)return;//²»ÊÇ±ğÈËÇëÇóÈëÈº£¬ºö??
 
-	MsgCode mc(eve.msg);//è§£æé™„è¨€
+	MsgCode mc(eve.msg);//½âÎö¸½ÑÔ
 
-	if (!mc.find("at"))return;//æŸ¥æ‰¾æ˜¯å¦æœ‰é…·qç :[CQ:at,qq=xxxx]
+	if (!mc.find("at"))return;//²éÕÒÊÇ·ñÓĞ¿áq??:[CQ:at,qq=xxxx]
 
-	string qq = mc.get("qq");//æå–qq
+	string qq = mc.get("qq");//ÌáÈ¡qq
 }
