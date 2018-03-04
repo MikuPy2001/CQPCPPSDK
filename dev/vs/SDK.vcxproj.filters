@@ -131,6 +131,9 @@
     <ClInclude Include="..\..\inculde\INItool.h">
       <Filter>INItool</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\inculde\winSpeak.h">
+      <Filter>winSpeak</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\res\CQP.lib" />

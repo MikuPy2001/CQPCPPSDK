@@ -1,4 +1,5 @@
 #include "..\..\inculde\winSpeak.h"
+#include "..\..\inculde\CQLogger.h"
 
 #include "sapi.h"
 #include "sphelper.h"
@@ -33,9 +34,32 @@ bool Speak_init() {
 }
 
 bool Speak_to_wav_file(string file, string wantSay) {
+	static CQ::logger log("SDK-Speak");
+	auto m = file.length() - 4;
+	if (
+		m < 0 ||
+		file[m] != '.' ||
+		(file[m + 1] != 'w' && file[m + 1] != 'W') ||
+		(file[m + 2] != 'a' && file[m + 2] != 'A') ||
+		(file[m + 3] != 'v' && file[m + 3] != 'V')
+		) {
+		log.Debug("文件名必须以.wav结尾");
+		return false;
+	}
+	if (!Speak_init()) { log.Debug("Speak初始化失败"); return false; }
+
+	char pBuf[MAX_PATH];
+	GetCurrentDirectoryA(MAX_PATH, pBuf);
+
+	string s(pBuf);
+	s += "\\data\\record\\";
+	s += file;
+	//log.Debug(string("根目录为:") + pBuf);
+	//log.Debug("路径为:" + s);
+
 	bool res = false;
 
-	auto _file = TW(file);
+	auto _file = TW(s.c_str());
 	auto _wantSay = TW(wantSay);
 
 	CSpStreamFormat OriginalFmt;//创建一个输出流，绑定到wav文件
@@ -68,16 +92,17 @@ bool Speak_to_wav_file(string file, string wantSay) {
 				res = true;
 			}
 			else {
-				cout << "SPBindToFile" << endl;
+				log.Debug("SPBindToFile(...)函数执行失败,可能的原因是文件名不正确:" + s);
 			}
 		}
 		else {
-			cout << "OriginalFmt.AssignFormat(cpOldStream)" << endl;
+			log.Debug("OriginalFmt.AssignFormat(cpOldStream)函数执行失败,您的电脑可能不支持此功能.");
 		}
 	}
 	else {
-		cout << "GetOutputStream" << endl;
+		log.Debug("ISpVoice->GetOutputStream函数执行失败,您的电脑可能不支持此功能.");
 	}
 
 	return res;
 }
+

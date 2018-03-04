@@ -8,18 +8,9 @@ using namespace CQ;
 
 EVE_GroupMsg_EX(Speak) {
 	if (eve.message[0] != '.')return;
+	if (eve.message[1] != ' ')return;
 
-	auto txt = eve.message.substr(1);
+	auto txt = eve.message.substr(2);
 
-	Speak_init();
-
-	char pBuf[MAX_PATH];
-	GetCurrentDirectory(MAX_PATH, pBuf);
-
-	string s(pBuf);
-	s += "\\data\\record\\out.wav";
-
-	Speak_to_wav_file(s, txt);
-
-	eve.sendMsg() << code::record("out.wav") << send;
+	eve.sendMsg() << code::record("out.wav", txt) << send;
 }

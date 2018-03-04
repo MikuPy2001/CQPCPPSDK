@@ -47,6 +47,7 @@
     <ClInclude Include="..\..\inculde\CQTools.h" />
     <ClInclude Include="..\..\inculde\INItool.h" />
     <ClInclude Include="..\..\inculde\Unpack.h" />
+    <ClInclude Include="..\..\inculde\winSpeak.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\res\CQP.lib" />

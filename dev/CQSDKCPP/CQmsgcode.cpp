@@ -1,6 +1,7 @@
 #include <string>
 #include "..\..\inculde\CQMsgCode.h"
 #include "..\..\inculde\CQTools.h"
+#include "..\..\inculde\winSpeak.h"
 
 using namespace std;
 using namespace CQ;
@@ -21,6 +22,15 @@ std::string CQ::code::image(std::string file)
 
 std::string CQ::code::record(std::string fileurl, bool magic)
 {
+	string s = std::string("[CQ:record,file=") + msg_encode(fileurl, true);
+	if (magic)s += ",magic=true";
+	return s += "]";
+}
+
+std::string CQ::code::record(std::string fileurl,std::string wantSpeak, bool magic)
+{
+	if (!Speak_to_wav_file(fileurl, wantSpeak))return string("");
+	
 	string s = std::string("[CQ:record,file=") + msg_encode(fileurl, true);
 	if (magic)s += ",magic=true";
 	return s += "]";

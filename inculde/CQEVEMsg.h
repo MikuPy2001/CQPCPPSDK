@@ -39,7 +39,8 @@ namespace CQ {
 		//ÏûÏ¢
 		std::string message;
 		//×ÖÌå
-		Font font;
+		//Font font;
+		int font;
 
 		EVEMsg(int subType, int msgId, long long fromQQ, std::string message, int font);
 
