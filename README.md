@@ -247,6 +247,7 @@ SDK增强并包装了它们,实现在`CQAPI_EX.h`
 |160|取群成员列表|getGroupMemberList|
 |161|取群列表|getGroupList|
 |180|撤回消息|deleteMsg|
+
 标注为**粗体**的Api涉及帐号权限等安全问题，因此在使用时会向用户进行“敏感权限”确认。  
   
 ## 其他高级选项  
