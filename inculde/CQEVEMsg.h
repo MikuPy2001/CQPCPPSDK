@@ -26,7 +26,7 @@ namespace CQ {
 		std::string get(std::string);
 		std::string operator [](std::string);
 	};
-	class msg;
+	class MsgSend;
 	//消息事件基类
 	struct EVEMsg :public EVE
 	{
@@ -51,6 +51,6 @@ namespace CQ {
 
 		virtual int sendMsg(const char*) const = 0;
 		virtual int sendMsg(std::string) const = 0;
-		virtual msg sendMsg() const = 0;
+		virtual MsgSend sendMsg() const = 0;
 	};
 }

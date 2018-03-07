@@ -39,21 +39,21 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="项目配置.props" />
-    <Import Project="复制到酷Q.props" />
+    <Import Project="请在此指定酷Q目录.props" />
+    <Import Project="复制json.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="项目配置.props" />
-    <Import Project="复制到酷Q.props" />
+    <Import Project="请在此指定酷Q目录.props" />
+    <Import Project="复制json.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile />
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,11 +73,16 @@
   <ItemGroup>
     <ClCompile Include="src\appmain.cpp" />
     <ClCompile Include="src\example_winSpeak.cpp" />
+    <ClCompile Include="src\example_如何发送一条消息.cpp" />
     <ClCompile Include="src\example_获取进群邀请人.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\APPINFO.h" />
+    <ClInclude Include="src\string_seh.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="com.example.demo.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

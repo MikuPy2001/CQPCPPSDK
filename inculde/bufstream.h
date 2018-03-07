@@ -4,6 +4,9 @@ namespace CQ {
 	class CQstream {
 	protected:
 		std::string buf;
+		bool raw;
+		friend void RAW(CQstream & log);
+		friend void CODE(CQstream & log);
 	public:
 		virtual void clear();
 
@@ -37,5 +40,10 @@ namespace CQ {
 	void send(CQstream & log);
 	//只发送,保留缓冲区,下次发送时将发送重复内容
 	void flush(CQstream & log);
+	//换行
 	void endl(CQstream & log);
+	//输出原始字符而不是酷Q码
+	void RAW(CQstream & log);
+	//输出酷Q码
+	void CODE(CQstream & log);
 }

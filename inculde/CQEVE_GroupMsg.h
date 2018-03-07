@@ -64,7 +64,7 @@ namespace CQ {
 		// 通过 EVEMsg 继承
 		int sendMsg(const char *) const override;
 		int sendMsg(std::string) const override;
-		msg sendMsg() const override;
+		MsgSend sendMsg() const override;
 
 		//获取匿名者信息
 		AnonymousInfo&getFromAnonymousInfo() /*throw(std::exception_ptr)*/;

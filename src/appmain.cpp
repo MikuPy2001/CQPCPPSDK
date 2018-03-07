@@ -1,6 +1,4 @@
-#include <CQAPI_EX.h>
-#include <CQEVE_GroupMsg.h>
-#include <CQEVE_PrivateMsg.h>
+#include <CQEVE.h>
 #include <CQLogger.h>
 
 #include "APPINFO.h"
@@ -9,20 +7,17 @@
 using namespace std;
 using namespace CQ;
 
-EVE_Disable(Disable)
-{
-	return 0;
-}
+Logger logger("酷Q样例应用");
 
 EVE_Enable(Enable)
 {
+	logger.Info("应用被启用");
 	return 0;
 }
 
-EVE_Menu(menu1)
+EVE_Disable(Disable)
 {
-	addLog(Log_Info, "菜单事件", "菜单1被点击");
-
+	logger.Info("应用被停用");
 	return 0;
 }
 

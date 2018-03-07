@@ -1,7 +1,7 @@
-#include <string>
 #include "..\..\inculde\CQMsgCode.h"
 #include "..\..\inculde\CQTools.h"
-#include "..\..\inculde\winSpeak.h"
+
+#include <string>
 
 using namespace std;
 using namespace CQ;
@@ -15,56 +15,6 @@ size_t strlen(string&s, size_t st) {
 	return len;
 }
 
-std::string CQ::code::image(std::string file)
-{
-	return std::string("[CQ:image,file=") + msg_encode(file, true) + "]";
-}
-
-std::string CQ::code::record(std::string fileurl, bool magic)
-{
-	string s = std::string("[CQ:record,file=") + msg_encode(fileurl, true);
-	if (magic)s += ",magic=true";
-	return s += "]";
-}
-
-std::string CQ::code::record(std::string fileurl,std::string wantSpeak, bool magic)
-{
-	if (!Speak_to_wav_file(fileurl, wantSpeak))return string("");
-	
-	string s = std::string("[CQ:record,file=") + msg_encode(fileurl, true);
-	if (magic)s += ",magic=true";
-	return s += "]";
-}
-
-std::string CQ::code::face(int faceid)
-{
-	return std::string("[CQ:face,id=") + to_string(faceid) + "]";
-}
-
-std::string CQ::code::face(CQ::face face)
-{
-	return code::face((int)face);
-}
-
-std::string CQ::code::at(long long QQ)
-{
-	return std::string("[CQ:at,qq=") + to_string(QQ) + "]";
-}
-
-std::string CQ::code::effect(std::string type, int id, std::string content)
-{
-	return std::string("[CQ:effect,type=") + type + ",id=" + to_string(id) + ",content=" + msg_encode(content, true) + "]";
-}
-
-std::string CQ::code::sign(std::string title, std::string imageUrl)
-{
-	return std::string("[CQ:sign,title=") + msg_encode(title, true) + ",image=" + msg_encode(imageUrl, true) + "]";
-}
-
-std::string CQ::code::anonymous(bool ignore)
-{
-	return std::string(ignore ? "[CQ:anonymous,ignore=true]" : "[CQ:anonymous]");
-}
 
 void CQ::MsgCode::decod()
 {

@@ -34,7 +34,7 @@ bool Speak_init() {
 }
 
 bool Speak_to_wav_file(string file, string wantSay) {
-	static CQ::logger log("SDK-Speak");
+	static CQ::Logger log("SDK-Speak");
 	auto m = file.length() - 4;
 	if (
 		m < 0 ||

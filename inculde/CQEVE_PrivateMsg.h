@@ -2,6 +2,7 @@
 #include "CQEVE.h"//不能删除此行...
 //#include "CQEVEMsg.h"
 //#include "CQTools.h"
+#include "CQEVEMsg.h"
 #include "CQMsgSend.h"
 
 /*
@@ -46,7 +47,7 @@ namespace CQ {
 		bool fromDiscuss() const;
 
 		// 通过 EVEMsg 继承
-		virtual msg sendMsg() const override;
+		virtual MsgSend sendMsg() const override;
 
 		virtual int sendMsg(const char *) const override;
 

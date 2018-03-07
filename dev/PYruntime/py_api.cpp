@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "init.h"
+#include "py_init.h"
 
 typedef PyObject* PYO;
 

@@ -6,6 +6,7 @@
 
 using namespace CQ;
 using namespace std;
+
 int lasterr;
 
 CQ::StrangerInfo::StrangerInfo(const char* msg)

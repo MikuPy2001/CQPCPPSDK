@@ -27,10 +27,19 @@
     <ClCompile Include="src\example_获取进群邀请人.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\example_如何发送一条消息.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\APPINFO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\string_seh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="com.example.demo.json" />
   </ItemGroup>
 </Project>

@@ -27,9 +27,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\CQSDKCPP\CQmsgcode.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQstream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -56,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="..\winSpeak\winSpeak.cpp">
       <Filter>winSpeak</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CQSDKCPP\CQMsgCode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CQSDKCPP\CQcode.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,16 +113,7 @@
     <ClInclude Include="..\..\inculde\CQconstant.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inculde\CQface.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\inculde\CQLogger.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\inculde\CQMsgCode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\inculde\CQMsgSend.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\inculde\CQTools.h">
@@ -133,6 +127,18 @@
     </ClInclude>
     <ClInclude Include="..\..\inculde\winSpeak.h">
       <Filter>winSpeak</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inculde\CQcode.h">
+      <Filter>头文件\聊天</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inculde\CQface.h">
+      <Filter>头文件\聊天</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inculde\CQMsgCode.h">
+      <Filter>头文件\聊天</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inculde\CQMsgSend.h">
+      <Filter>头文件\聊天</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

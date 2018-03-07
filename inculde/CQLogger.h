@@ -18,11 +18,11 @@ namespace CQ
 		virtual void send() override;
 	};
 
-	class logger
+	class Logger
 	{
 		std::string title;
 	public:
-		logger(std::string title);
+		Logger(std::string title);
 		void setTitle(std::string title);
 
 		void Debug(std::string&msg)const;

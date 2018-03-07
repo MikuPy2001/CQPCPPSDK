@@ -12,6 +12,9 @@
     <ClCompile>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
+    <Link>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
