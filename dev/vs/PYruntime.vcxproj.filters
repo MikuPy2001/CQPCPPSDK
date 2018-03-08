@@ -18,14 +18,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PYruntime\stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\PYruntime\targetver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\PYruntime\py_init.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\stdafx.h">
+      <Filter>NewFilter1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\targetver.h">
+      <Filter>NewFilter1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

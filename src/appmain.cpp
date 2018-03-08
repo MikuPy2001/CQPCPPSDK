@@ -7,7 +7,8 @@
 using namespace std;
 using namespace CQ;
 
-Logger logger("酷Q样例应用");
+//请加上static,表示这个logger只有本cpp有效
+static Logger logger("酷Q样例应用");
 
 EVE_Enable(Enable)
 {

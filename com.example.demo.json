@@ -14,7 +14,7 @@
     {
       "name": "应用启用事件", // 事件名称,随意
       "function": "Enable", // 事件对应函数,也就是你写在括号里的名字
-      "type": 1003, // 事件类型,请查看事件宏注释的第一行(type=xxx)
+      "type": 1003, // 事件类型,请查看事件宏注释的第一行(type =xxx)
       "priority": 30000, // 事件优先级(参见 cq.im/deveventpriority)
       "id": 1 // 事件ID
     },
@@ -38,6 +38,27 @@
       "type": 302,
       "priority": 30000,
       "id": 4
+    },
+    {
+      "name": "示例-发送一条消息",
+      "function": "SendMsg",
+      "type": 21,
+      "priority": 30000,
+      "id": 5
+    },
+    {
+      "name": "示例-修改消息",
+      "function": "ChangMsg",
+      "type": 21,
+      "priority": 20000,
+      "id": 6
+    },
+    {
+      "name": "示例-修改消息(展示消息)",
+      "function": "ChangMsg2",
+      "type": 21,
+      "priority": 30000,
+      "id": 7
     }
   ],
   "menu": [

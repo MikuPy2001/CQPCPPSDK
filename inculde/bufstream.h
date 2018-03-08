@@ -4,10 +4,11 @@ namespace CQ {
 	class CQstream {
 	protected:
 		std::string buf;
-		bool raw;
+		bool raw = false;
 		friend void RAW(CQstream & log);
 		friend void CODE(CQstream & log);
 	public:
+		virtual	bool isRAW();
 		virtual void clear();
 
 		//字符串
@@ -18,6 +19,8 @@ namespace CQ {
 		virtual	CQstream & operator <<(const char * c);
 
 		//整数
+		virtual	CQstream & append(const bool & i);
+		virtual	CQstream & operator <<(const bool & i);
 		virtual	CQstream & append(const int & i);
 		virtual	CQstream & operator <<(const int & i);
 		virtual	CQstream & append(const  size_t & i);
@@ -31,8 +34,8 @@ namespace CQ {
 
 		//特殊控制符
 		virtual	CQstream & operator <<(void(*control)(CQstream &));
-		virtual	void send() = 0;
-		virtual	void flush();
+		virtual	void SEND() = 0;
+		virtual	void FLUSH();
 
 		virtual ~CQstream();
 	};

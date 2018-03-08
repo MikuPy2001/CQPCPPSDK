@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "init.h"
+#include "py_init.h"
 
 MUST_AppInfo_RETURN(CQAPPID)
 
@@ -9,10 +9,6 @@ BOOL APIENTRY DllMain(
 	LPVOID  lpReserved
 )
 {
-	load_runtime();//初始化环境
-
-
-
 	return TRUE;
 }
 

@@ -30,6 +30,9 @@
     <ClCompile Include="src\example_如何发送一条消息.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\example_如何修改一条消息(高级).cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\APPINFO.h">

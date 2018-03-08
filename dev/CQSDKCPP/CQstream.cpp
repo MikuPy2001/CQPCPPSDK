@@ -61,12 +61,14 @@ logstream CQ::Logger::Error() const { return logstream(title, Log_Error); }
 
 logstream CQ::Logger::Fatal() const { return logstream(title, Log_Fatal); }
 
-void CQ::send(CQstream & log) { log.send(); log.clear(); }
-void CQ::flush(CQstream & log) { log.flush(); }
+void CQ::send(CQstream & log) { log.SEND(); log.clear(); }
+void CQ::flush(CQstream & log) { log.FLUSH(); }
 void CQ::endl(CQstream & log) { log << "\r\n"; }
 void CQ::RAW(CQstream & log) { log.raw = true; }
 
-void CQ::CODE(CQstream & log){ log.raw = false; }
+void CQ::CODE(CQstream & log) { log.raw = false; }
+
+bool CQ::CQstream::isRAW() { return raw; }
 
 void CQ::CQstream::clear() { buf.clear(); }
 
@@ -77,6 +79,10 @@ CQstream & CQ::CQstream::operator<<(const string & s) { return (*this).append(s)
 CQstream & CQ::CQstream::append(const char * s) { buf += (raw ? msg_encode(string(s)) : s); return *this; }
 
 CQstream & CQ::CQstream::operator<<(const char * c) { return (*this).append(c); }
+
+CQstream & CQ::CQstream::append(const bool & i) { buf += i ? "true" : "false"; return *this; }
+
+CQstream & CQ::CQstream::operator<<(const bool & i) { return (*this).append(i); }
 
 CQstream & CQ::CQstream::append(const int & i) { buf += to_string(i); return *this; }
 
@@ -100,19 +106,19 @@ CQstream & CQ::CQstream::operator<<(const long long & l) { return (*this).append
 
 CQstream & CQ::CQstream::operator<<(void(*control)(CQstream &)) { control(*this); return *this; }
 
-void CQ::CQstream::flush() { send(); }
+void CQ::CQstream::FLUSH() { SEND(); }
 
 inline CQ::CQstream::~CQstream() {}
 
 inline CQ::logstream::logstream(std::string title, int Log_flag) : flag(Log_flag), title(title) {}
 
-void CQ::logstream::send() { if (buf.size() <= 0)return; addLog(flag, title.c_str(), buf.c_str()); }
+void CQ::logstream::SEND() { if (buf.size() <= 0)return; addLog(flag, title.c_str(), buf.c_str()); }
 
 CQ::MsgSend::MsgSend(long long ID, msgtype Type) : ID(ID), subType(Type) {}
 
 CQ::MsgSend::MsgSend(long long ID, int Type) : ID(ID), subType(Type) {}
 
-void CQ::MsgSend::send() {
+void CQ::MsgSend::SEND() {
 	if (buf.size() <= 0)return;
 	switch (subType)
 	{

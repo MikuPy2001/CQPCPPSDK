@@ -26,6 +26,6 @@ namespace CQ
 		*/
 		MsgSend(long long GroupID_Or_QQID, int Type);
 
-		virtual void send() override;
+		virtual void SEND() override;
 	};
 }

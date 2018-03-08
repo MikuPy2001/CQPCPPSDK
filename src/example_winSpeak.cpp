@@ -7,14 +7,10 @@
 using namespace std;
 using namespace CQ;
 
-//Õâ¸ö×Ö¶ÎÓĞ×¢ÊÍ
-
-
 EVE_GroupMsg_EX(Speak) {
-
 	static string msgs("Speak:");
 
-	if (eve.message.compare(0, msgs.size(), msgs))return;
+	if (eve.message.compare(0, msgs.size(), msgs)) return;
 
 	auto txt = eve.message.substr(msgs.size());
 

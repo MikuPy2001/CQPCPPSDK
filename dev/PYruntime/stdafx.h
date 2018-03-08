@@ -11,7 +11,13 @@
 // Windows 头文件: 
 #include <windows.h>
 
-#define CQAPPID "cn.MikuPy2001.PYruntime"
+#ifdef _DEBUG
+#pragma comment(lib,"SDK_Debug.lib")
+#else
+#pragma comment(lib,"SDK_Release.lib")
+#endif
+
+#define CQAPPID "cn.mikupy2001.PYruntime"
 
 // TODO: 在此处引用程序需要的其他头文件
 #include <Python.h>

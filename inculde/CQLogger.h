@@ -15,7 +15,7 @@ namespace CQ
 		logstream(std::string title, int Log_flag);
 
 		// Í¨¹ý CQstream ¼Ì³Ð
-		virtual void send() override;
+		virtual void SEND() override;
 	};
 
 	class Logger
