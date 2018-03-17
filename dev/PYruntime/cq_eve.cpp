@@ -1,70 +1,57 @@
-#include "stdafx.h"
 #include "py_init.h"
+
 #include <CQLogger.h>
+#include <CQEVE_ALL.h>
 
 using namespace std;
 using namespace CQ;
 
 static Logger logger("python");
 
-EVE_Enable(EnableT) {
-	logger.Info("EnableT");
+EVE_Enable(Enable) {
+	logger.Info("Enable");
 
-	if (!py_isinit && py_init())
-		logger.Info("加载成功");//初始化环境
-	else if (!py_isinit)
-		logger.Info("加载失败");
-	else
+	if (py_isinit)
 		logger.Debug("已加载");
-
-	return 0;
-}
-
-EVE_Startup(Startup2) {
-	logger.Info("Startup2");
-	return 0;
-}
-EVE_Startup(StartupFun) {
-	logger.Info("StartupFun");
-
-	if (!py_isinit && py_init())
+	else if (py_init())
 		logger.Info("加载成功");//初始化环境
-	else if (!py_isinit)
-		logger.Info("加载失败");
 	else
-		logger.Debug("已加载");
+		logger.Info("加载失败");
 
 	return 0;
 }
+
 //
 //EVE_Exit(Exit) {}
 //
-//EVE_Enable(Enable1) {}
-//EVE_Enable(Enable2) {}
-//EVE_Enable(Enable3) {}
-//EVE_Enable(Enable4) {}
-//EVE_Disable(Disable1) {}
-//EVE_Disable(Disable2) {}
-//EVE_Disable(Disable3) {}
-//EVE_Disable(Disable4) {}
+//EVE_Disable(Disable) {}
 
 EVE_PrivateMsg(PrivateMsg1) {
 	if (!py_PrivateMsg1) return 0;
-	if (!py_t_PrivateMsg1) return 0;
+	//if (!py_t_PrivateMsg1) return 0;
+	logger.Debug() << "接受事件:" << send;
 
-	auto args = Py_BuildValue("(iilsi)", subType, msgId, fromQQ, msg, font);
-	auto *ret = PyEval_CallObject(py_RunTime, args);
+	auto args = Py_BuildValue("(iilsi)", subType, msgId, fromQQ, _U(msg), font);
+
+	logger.Debug() << "调用函数:" << (int)&args << send;
+	auto *ret = PyEval_CallObject(py_PrivateMsg1, args);
+	logger.Debug() << "返回值地址:" << (int)&ret << send;
 
 	auto ex = PyErr_Occurred();
-	if (!ex) {
-		logger.InfoSend() << "程序未能正确执行,异常如下:";
-		PyErr_Print();
+	if (ex) {
+		auto *ret = PyEval_CallObject(py_printex, NULL);
+		char* result;
+		PyArg_Parse(ret, "c", &result);
+
+		logger.InfoSend() << "程序未能正确执行,异常如下:"<< result << send;
+
 		PyErr_Clear();
 		return 0;
 	}
 
 	int result;
 	PyArg_Parse(ret, "i", &result);
+	logger.Debug() << "返回值:" << result << send;
 	return result;
 }
 //EVE_PrivateMsg(PrivateMsg2) {}

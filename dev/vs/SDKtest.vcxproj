@@ -39,15 +39,15 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="修改输出地址.props" />
-    <Import Project="复制到app.props" />
-    <Import Project="包含SDK.props" />
+    <Import Project="输出到酷Q目录.props" />
+    <Import Project="添加SDK依赖.props" />
+    <Import Project="通用_修改中间目录.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="修改输出地址.props" />
-    <Import Project="复制到app.props" />
-    <Import Project="包含SDK.props" />
+    <Import Project="输出到酷Q目录.props" />
+    <Import Project="添加SDK依赖.props" />
+    <Import Project="通用_修改中间目录.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

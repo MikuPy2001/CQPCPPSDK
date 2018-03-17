@@ -1,24 +1,37 @@
 #pragma once
 
+#include <Python.h>
+
+#ifdef _DEBUG
+#pragma comment(lib,"SDK_Debug.lib")
+#else
+#pragma comment(lib,"SDK_Release.lib")
+#endif
+
+#define CQAPPID "cn.mikupy2001.PYruntime"
+
 bool py_init();
+
+#include <memory>
+std::shared_ptr<char*> U(const char* strGbk);
+std::shared_ptr<char*> G(const char* strUtf8);
+#define _U(CHAR) (*U(CHAR))
+#define _G(CHAR) (*G(CHAR))
 
 PyObject *getCQAPI();
 
 extern bool 
 py_isinit                       ,
-py_t_Disable1                   ,
-py_t_Disable2                   ,
-py_t_Disable3                   ,
-py_t_Disable4                   ,
+
+py_t_Enable                     ,
+py_t_Disable                    ,
+py_t_Startup                    ,
+py_t_Exit                       ,
+
 py_t_DiscussMsg1                ,
 py_t_DiscussMsg2                ,
 py_t_DiscussMsg3                ,
 py_t_DiscussMsg4                ,
-py_t_Enable1                    ,
-py_t_Enable2                    ,
-py_t_Enable3                    ,
-py_t_Enable4                    ,
-py_t_Exit                       ,
 py_t_Friend_Add1                ,
 py_t_Friend_Add2                ,
 py_t_Friend_Add3                ,
@@ -43,7 +56,6 @@ py_t_Request_AddGroup1          ,
 py_t_Request_AddGroup2          ,
 py_t_Request_AddGroup3          ,
 py_t_Request_AddGroup4          ,
-py_t_Startup                    ,
 py_t_System_GroupAdmin1         ,
 py_t_System_GroupAdmin2         ,
 py_t_System_GroupAdmin3         ,
@@ -59,19 +71,14 @@ py_t_System_GroupMemberIncrease4;
 
 extern PyObject
 *py_RunTime                     ,
-*py_Disable1                    ,
-*py_Disable2                    ,
-*py_Disable3                    ,
-*py_Disable4                    ,
+*py_printex,
+*py_Enable                      ,
+*py_Disable                     ,
+*py_Exit                        ,
 *py_DiscussMsg1                 ,
 *py_DiscussMsg2                 ,
 *py_DiscussMsg3                 ,
 *py_DiscussMsg4                 ,
-*py_Enable1                     ,
-*py_Enable2                     ,
-*py_Enable3                     ,
-*py_Enable4                     ,
-*py_Exit                        ,
 *py_Friend_Add1                 ,
 *py_Friend_Add2                 ,
 *py_Friend_Add3                 ,

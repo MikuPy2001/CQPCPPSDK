@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "py_init.h"
 
 bool 
@@ -56,19 +55,14 @@ py_t_System_GroupMemberIncrease4 = false;
 
 PyObject
 *py_RunTime                      =nullptr,
-*py_Disable1                     =nullptr,
-*py_Disable2                     =nullptr,
-*py_Disable3                     =nullptr,
-*py_Disable4                     =nullptr,
+*py_printex = nullptr,
+*py_Enable                       =nullptr,
+*py_Disable                      =nullptr,
+*py_Exit                         =nullptr,
 *py_DiscussMsg1                  =nullptr,
 *py_DiscussMsg2                  =nullptr,
 *py_DiscussMsg3                  =nullptr,
 *py_DiscussMsg4                  =nullptr,
-*py_Enable1                      =nullptr,
-*py_Enable2                      =nullptr,
-*py_Enable3                      =nullptr,
-*py_Enable4                      =nullptr,
-*py_Exit                         =nullptr,
 *py_Friend_Add1                  =nullptr,
 *py_Friend_Add2                  =nullptr,
 *py_Friend_Add3                  =nullptr,

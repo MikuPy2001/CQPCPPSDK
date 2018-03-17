@@ -12,8 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\PYruntime\py_init.h" />
-    <ClInclude Include="..\PYruntime\stdafx.h" />
-    <ClInclude Include="..\PYruntime\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PYruntime\cq_eve.cpp" />
@@ -21,7 +19,7 @@
     <ClCompile Include="..\PYruntime\py_init.cpp" />
     <ClCompile Include="..\PYruntime\py_api.cpp" />
     <ClCompile Include="..\PYruntime\py_变量.cpp" />
-    <ClCompile Include="..\PYruntime\stdafx.cpp" />
+    <ClCompile Include="..\PYruntime\py_转码.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -36,14 +34,14 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -54,15 +52,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="添加py依赖.props" />
     <Import Project="通用_修改中间目录.props" />
-    <Import Project="输出到酷Q目录.props" />
     <Import Project="添加SDK依赖.props" />
+    <Import Project="输出到PYRUN目录.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="添加py依赖.props" />
     <Import Project="通用_修改中间目录.props" />
-    <Import Project="输出到酷Q目录.props" />
     <Import Project="添加SDK依赖.props" />
+    <Import Project="输出到PYRUN目录.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,7 +94,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <DelayLoadDLLs>python36.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>python36.dll;CQP.dll</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

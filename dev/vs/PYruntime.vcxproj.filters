@@ -21,12 +21,6 @@
     <ClInclude Include="..\PYruntime\py_init.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\PYruntime\stdafx.h">
-      <Filter>NewFilter1</Filter>
-    </ClInclude>
-    <ClInclude Include="..\PYruntime\targetver.h">
-      <Filter>NewFilter1</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PYruntime\cq_eve.cpp">
@@ -38,13 +32,13 @@
     <ClCompile Include="..\PYruntime\dllmain.cpp">
       <Filter>NewFilter1</Filter>
     </ClCompile>
-    <ClCompile Include="..\PYruntime\stdafx.cpp">
-      <Filter>NewFilter1</Filter>
-    </ClCompile>
     <ClCompile Include="..\PYruntime\py_init.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\PYruntime\py_变量.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PYruntime\py_转码.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

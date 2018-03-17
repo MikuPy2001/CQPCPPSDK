@@ -1,25 +1,30 @@
-#include "stdafx.h"
+#define WIN32_LEAN_AND_MEAN
 #include "py_init.h"
+
 #include <CQLogger.h>
+#include <CQAPI_EX.h>
+
+#include <Python.h>
+
 #include <iostream>
+
+#include <windows.h>
 
 using namespace std;
 using namespace CQ;
 static Logger logger("初始化");
 
 void 反射函数() {
-	py_Disable1 = PyObject_GetAttrString(py_RunTime, "Disable1");
-	py_Disable2 = PyObject_GetAttrString(py_RunTime, "Disable2");
-	py_Disable3 = PyObject_GetAttrString(py_RunTime, "Disable3");
-	py_Disable4 = PyObject_GetAttrString(py_RunTime, "Disable4");
+	py_printex = PyObject_GetAttrString(py_RunTime, "printex");
+
+	py_Enable = PyObject_GetAttrString(py_RunTime, "Enable");
+
+	py_Disable = PyObject_GetAttrString(py_RunTime, "Disable");
+
 	py_DiscussMsg1 = PyObject_GetAttrString(py_RunTime, "DiscussMsg1");
 	py_DiscussMsg2 = PyObject_GetAttrString(py_RunTime, "DiscussMsg2");
 	py_DiscussMsg3 = PyObject_GetAttrString(py_RunTime, "DiscussMsg3");
 	py_DiscussMsg4 = PyObject_GetAttrString(py_RunTime, "DiscussMsg4");
-	py_Enable1 = PyObject_GetAttrString(py_RunTime, "Enable1");
-	py_Enable2 = PyObject_GetAttrString(py_RunTime, "Enable2");
-	py_Enable3 = PyObject_GetAttrString(py_RunTime, "Enable3");
-	py_Enable4 = PyObject_GetAttrString(py_RunTime, "Enable4");
 	py_Exit = PyObject_GetAttrString(py_RunTime, "Exit");
 	py_Friend_Add1 = PyObject_GetAttrString(py_RunTime, "Friend_Add1");
 	py_Friend_Add2 = PyObject_GetAttrString(py_RunTime, "Friend_Add2");
@@ -64,11 +69,20 @@ bool 准备环境() {
 		return py_isinit;
 	}
 
-	auto lib = LoadLibrary(L"\\bin\\python36.dll");
-	if (!lib) {
-		logger.Warning("无法加载\\bin\\python36.dll,请检查!");
-		return false;
-	}
+	char pBuf[MAX_PATH];
+	GetCurrentDirectory(MAX_PATH, pBuf);
+	string bins(pBuf), locs(pBuf);
+
+	bins += "\\bin\\python36.dll";
+	locs += "\\python36.dll";
+
+	if (!LoadLibrary("python36.dll"))
+		if (!LoadLibrary(bins.c_str()))
+			if (!LoadLibrary(locs.c_str())) {
+				logger.Debug(pBuf);
+				logger.Warning("无法找到并加载python36.dll,请将其放入bin目录!");
+				return false;
+			}
 
 	Py_Initialize();
 	if (!Py_IsInitialized())
@@ -86,6 +100,11 @@ bool 准备环境() {
 		Py_Finalize();
 		return false;
 	}
+	auto cq = getCQAPI();
+	logger.Debug() << "cq:" << (int)cq << send;
+	auto r = PyModule_AddObject(py_RunTime, "CQ", cq);
+	logger.Debug() << "PyModule_AddObject:" << r << send;
+
 	return true;
 }
 bool py_init() {

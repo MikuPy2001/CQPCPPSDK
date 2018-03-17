@@ -6,6 +6,7 @@ Written by MukiPy2001 & Thanks for the help of orzFly and Coxxs
 #pragma once
 
 #include "cqdefine.h"
+
 #define CQAPI(NAME,ReturnType) extern "C" __declspec(dllimport) ReturnType __stdcall NAME
 
 namespace CQ {

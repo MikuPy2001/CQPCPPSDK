@@ -91,6 +91,8 @@ void INItool::load(string string)
 	½âÎö(stringstream(string));
 }
 
+bool ini::INItool::save() { return save(filename); }
+
 bool ini::INItool::save(std::string filename)
 {
 	ofstream out(filename);

@@ -1,7 +1,13 @@
-#include "stdafx.h"
 #include "py_init.h"
 
+#include <CQLogger.h>
+#include <CQAPI_EX.h>
+
+using namespace CQ;
+using namespace std;
+
 typedef PyObject* PYO;
+static Logger logger("python");
 
 //self - 调用方
 //args - 参数
@@ -10,16 +16,19 @@ typedef PyObject* PYO;
 SPO(py_addLog) {
 	PYO res = nullptr;
 	Py_BEGIN_ALLOW_THREADS;
+	logger.Debug() << "调用addLog:" << (int)&args << send;
 
 	整数型 优先级;
 	文本型 类型;
 	文本型 内容;
 
+	logger.Debug("py_addLog");
 	if (!PyArg_ParseTuple(args, "iss", &优先级, &类型, &内容)) {
+		logger.Debug() << "解析失败" << send;
 		return NULL;
 	}
 
-	整数型 r = CQ::addLog(优先级, 类型, 内容);
+	整数型 r = addLog(优先级, _G(类型), _G(内容));
 	res = Py_BuildValue("(i)", r);
 
 	Py_END_ALLOW_THREADS;
@@ -78,34 +87,34 @@ SPO(py_setGroupSpecialTitle) { PYO res = nullptr; Py_BEGIN_ALLOW_THREADS; Py_END
 SPO(py_setGroupWholeBan) { PYO res = nullptr; Py_BEGIN_ALLOW_THREADS; Py_END_ALLOW_THREADS; return res; }
 
 static PyMethodDef API方法数组[] = {
-	{ "addLog"              ,py_addLog, METH_VARARGS , },
-	{ "deleteMsg"           ,py_deleteMsg, METH_VARARGS , },
-	{ "getAppDirectory"     ,py_getAppDirectory, METH_VARARGS , },
-	{ "getCookies"          ,py_getCookies, METH_VARARGS , },
-	{ "getCsrfToken"        ,py_getCsrfToken, METH_VARARGS , },
-	{ "getGroupList"        ,py_getGroupList, METH_VARARGS , },
-	{ "getGroupMemberInfo"  ,py_getGroupMemberInfo, METH_VARARGS , },
-	{ "getLoginNick"        ,py_getLoginNick, METH_VARARGS , },
-	{ "getLoginQQ"          ,py_getLoginQQ, METH_VARARGS , },
-	{ "getRecord"           ,py_getRecord, METH_VARARGS , },
-	{ "getStrangerInfo"     ,py_getStrangerInfo, METH_VARARGS , },
-	{ "sendDiscussMsg"      ,py_sendDiscussMsg, METH_VARARGS , },
-	{ "sendGroupMsg"        ,py_sendGroupMsg, METH_VARARGS , },
-	{ "sendLike"            ,py_sendLike, METH_VARARGS , },
-	{ "sendPrivateMsg"      ,py_sendPrivateMsg, METH_VARARGS , },
-	{ "setDiscussLeave"     ,py_setDiscussLeave, METH_VARARGS , },
-	{ "setFatal"            ,py_setFatal, METH_VARARGS , },
-	{ "setFriendAddRequest" ,py_setFriendAddRequest, METH_VARARGS , },
-	{ "setGroupAddRequest"  ,py_setGroupAddRequest, METH_VARARGS , },
-	{ "setGroupAdmin"       ,py_setGroupAdmin, METH_VARARGS , },
-	{ "setGroupAnonymous"   ,py_setGroupAnonymous, METH_VARARGS , },
-	{ "setGroupAnonymousBan",py_setGroupAnonymousBan, METH_VARARGS , },
-	{ "setGroupBan"         ,py_setGroupBan, METH_VARARGS , },
-	{ "setGroupCard"        ,py_setGroupCard, METH_VARARGS , },
-	{ "setGroupKick"        ,py_setGroupKick, METH_VARARGS , },
-	{ "setGroupLeave"       ,py_setGroupLeave, METH_VARARGS , },
-	{ "setGroupSpecialTitle",py_setGroupSpecialTitle, METH_VARARGS , },
-	{ "setGroupWholeBan"    ,py_setGroupWholeBan, METH_VARARGS , },
+	{ "addLog"              ,py_addLog, METH_VARARGS , ""},
+	//{ "deleteMsg"           ,py_deleteMsg, METH_VARARGS , ""},
+	//{ "getAppDirectory"     ,py_getAppDirectory, METH_VARARGS , ""},
+	//{ "getCookies"          ,py_getCookies, METH_VARARGS , ""},
+	//{ "getCsrfToken"        ,py_getCsrfToken, METH_VARARGS ,"" },
+	//{ "getGroupList"        ,py_getGroupList, METH_VARARGS , ""},
+	//{ "getGroupMemberInfo"  ,py_getGroupMemberInfo, METH_VARARGS ,"" },
+	//{ "getLoginNick"        ,py_getLoginNick, METH_VARARGS , ""},
+	//{ "getLoginQQ"          ,py_getLoginQQ, METH_VARARGS ,"" },
+	//{ "getRecord"           ,py_getRecord, METH_VARARGS , ""},
+	//{ "getStrangerInfo"     ,py_getStrangerInfo, METH_VARARGS ,"" },
+	//{ "sendDiscussMsg"      ,py_sendDiscussMsg, METH_VARARGS , ""},
+	//{ "sendGroupMsg"        ,py_sendGroupMsg, METH_VARARGS , ""},
+	//{ "sendLike"            ,py_sendLike, METH_VARARGS ,"" },
+	//{ "sendPrivateMsg"      ,py_sendPrivateMsg, METH_VARARGS , ""},
+	//{ "setDiscussLeave"     ,py_setDiscussLeave, METH_VARARGS , ""},
+	//{ "setFatal"            ,py_setFatal, METH_VARARGS ,"" },
+	//{ "setFriendAddRequest" ,py_setFriendAddRequest, METH_VARARGS ,"" },
+	//{ "setGroupAddRequest"  ,py_setGroupAddRequest, METH_VARARGS , ""},
+	//{ "setGroupAdmin"       ,py_setGroupAdmin, METH_VARARGS ,"" },
+	//{ "setGroupAnonymous"   ,py_setGroupAnonymous, METH_VARARGS ,"" },
+	//{ "setGroupAnonymousBan",py_setGroupAnonymousBan, METH_VARARGS , ""},
+	//{ "setGroupBan"         ,py_setGroupBan, METH_VARARGS ,"" },
+	//{ "setGroupCard"        ,py_setGroupCard, METH_VARARGS , ""},
+	//{ "setGroupKick"        ,py_setGroupKick, METH_VARARGS , ""},
+	//{ "setGroupLeave"       ,py_setGroupLeave, METH_VARARGS ,"" },
+	//{ "setGroupSpecialTitle",py_setGroupSpecialTitle, METH_VARARGS , ""},
+	//{ "setGroupWholeBan"    ,py_setGroupWholeBan, METH_VARARGS ,"" },
 
 	{ NULL                  , NULL,0,NULL },
 };

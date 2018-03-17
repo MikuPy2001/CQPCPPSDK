@@ -73,7 +73,6 @@
   <ItemGroup>
     <ClCompile Include="src\appmain.cpp" />
     <ClCompile Include="src\example_winSpeak.cpp" />
-    <ClCompile Include="src\example_如何修改一条消息(高级).cpp" />
     <ClCompile Include="src\example_如何发送一条消息.cpp" />
     <ClCompile Include="src\example_获取进群邀请人.cpp" />
     <ClCompile Include="src\main.cpp" />

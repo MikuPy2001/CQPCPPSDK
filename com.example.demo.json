@@ -39,26 +39,26 @@
       "priority": 30000,
       "id": 4
     },
+    //{
+    //  "name": "示例-修改消息",
+    //  "function": "ChangMsg",
+    //  "type": 21,
+    //  "priority": 20000,
+    //  "id": 6
+    //},
+    //{
+    //  "name": "示例-修改消息(展示消息)",
+    //  "function": "ChangMsg2",
+    //  "type": 21,
+    //  "priority": 30000,
+    //  "id": 7
+    //}
     {
       "name": "示例-发送一条消息",
       "function": "SendMsg",
       "type": 21,
       "priority": 30000,
       "id": 5
-    },
-    {
-      "name": "示例-修改消息",
-      "function": "ChangMsg",
-      "type": 21,
-      "priority": 20000,
-      "id": 6
-    },
-    {
-      "name": "示例-修改消息(展示消息)",
-      "function": "ChangMsg2",
-      "type": 21,
-      "priority": 30000,
-      "id": 7
     }
   ],
   "menu": [
