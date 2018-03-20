@@ -7,7 +7,7 @@ using namespace CQ;
 using namespace std;
 
 typedef PyObject* PYO;
-static Logger logger("python");
+static Logger logger("PyRunAPi");
 
 //self - 调用方
 //args - 参数
@@ -15,23 +15,23 @@ static Logger logger("python");
 
 SPO(py_addLog) {
 	PYO res = nullptr;
-	Py_BEGIN_ALLOW_THREADS;
-	logger.Debug() << "调用addLog:" << (int)&args << send;
+	Py_BEGIN_ALLOW_THREADS
 
 	整数型 优先级;
 	文本型 类型;
 	文本型 内容;
+	整数型 r;
 
-	logger.Debug("py_addLog");
 	if (!PyArg_ParseTuple(args, "iss", &优先级, &类型, &内容)) {
 		logger.Debug() << "解析失败" << send;
 		return NULL;
 	}
 
-	整数型 r = addLog(优先级, _G(类型), _G(内容));
+	auto 类型G = G(类型), 内容G = G(内容);
+	r = addLog(优先级, *类型G, *内容G);
 	res = Py_BuildValue("(i)", r);
-
 	Py_END_ALLOW_THREADS;
+
 	return res;
 }
 SPO(py_deleteMsg) { PYO res = nullptr; Py_BEGIN_ALLOW_THREADS; Py_END_ALLOW_THREADS; return res; }

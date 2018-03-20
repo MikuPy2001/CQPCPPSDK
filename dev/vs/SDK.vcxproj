@@ -20,6 +20,7 @@
     <ClCompile Include="..\CQSDKCPP\CQTools.cpp" />
     <ClCompile Include="..\CQSDKCPP\debug.cpp" />
     <ClCompile Include="..\CQSDKCPP\Unpack.cpp" />
+    <ClCompile Include="..\ini\iniNew.cpp" />
     <ClCompile Include="..\ini\INItool.cpp" />
     <ClCompile Include="..\winSpeak\winSpeak.cpp" />
   </ItemGroup>
@@ -50,6 +51,8 @@
     <ClInclude Include="..\..\inculde\INItool.h" />
     <ClInclude Include="..\..\inculde\Unpack.h" />
     <ClInclude Include="..\..\inculde\winSpeak.h" />
+    <ClInclude Include="..\ini\inih.h" />
+    <ClInclude Include="..\ini\iniNew.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\res\CQP.lib" />

@@ -60,6 +60,9 @@
     <ClCompile Include="..\CQSDKCPP\CQcode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\ini\iniNew.cpp">
+      <Filter>INItool</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\inculde\CQEVE_RequestAddFriend.h">
@@ -139,6 +142,12 @@
     </ClInclude>
     <ClInclude Include="..\..\inculde\CQMsgSend.h">
       <Filter>头文件\聊天</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ini\iniNew.h">
+      <Filter>INItool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ini\inih.h">
+      <Filter>INItool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

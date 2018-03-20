@@ -32,12 +32,12 @@ void m() {
 	Enable = (fun1)GetProcAddress(dll, "Enable");
 	PrivateMsg1 = (fun2)GetProcAddress(dll, "PrivateMsg1");
 
-	cout << "Enable" << endl;
+	cout << "[Run]" << "Enable" << endl;
 	Enable();
-	cout << "PrivateMsg1" << endl;
+	cout << "[Run]" << "PrivateMsg1" << endl;
 	PrivateMsg1(1, 2, 3, "123", 0);
 
-	cout << "测试完成" << endl;
+	cout << "[Run]" << "测试完成" << endl;
 	return;
 }
 int main() {

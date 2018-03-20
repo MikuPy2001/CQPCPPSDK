@@ -1,4 +1,5 @@
 #include "py_init.h"
+#include "py_c2py.h"
 
 #include <CQLogger.h>
 #include <CQEVE_ALL.h>
@@ -6,7 +7,7 @@
 using namespace std;
 using namespace CQ;
 
-static Logger logger("python");
+static Logger logger("PyEve");
 
 EVE_Enable(Enable) {
 	logger.Info("Enable");
@@ -25,26 +26,14 @@ EVE_Enable(Enable) {
 //EVE_Exit(Exit) {}
 //
 //EVE_Disable(Disable) {}
-
 EVE_PrivateMsg(PrivateMsg1) {
 	if (!py_PrivateMsg1) return 0;
 	//if (!py_t_PrivateMsg1) return 0;
-	logger.Debug() << "接受事件:" << send;
 
-	auto args = Py_BuildValue("(iilsi)", subType, msgId, fromQQ, _U(msg), font);
+	auto *ret = PyEval_CallObject(py_PrivateMsg1, PyObj(subType, msgId, fromQQ, msg, font).getObj());
 
-	logger.Debug() << "调用函数:" << (int)&args << send;
-	auto *ret = PyEval_CallObject(py_PrivateMsg1, args);
-	logger.Debug() << "返回值地址:" << (int)&ret << send;
-
-	auto ex = PyErr_Occurred();
-	if (ex) {
-		auto *ret = PyEval_CallObject(py_printex, NULL);
-		char* result;
-		PyArg_Parse(ret, "c", &result);
-
-		logger.InfoSend() << "程序未能正确执行,异常如下:"<< result << send;
-
+	if (PyErr_Occurred()) {
+		logger.InfoSend() << "程序未能正确执行"	<< send;
 		PyErr_Clear();
 		return 0;
 	}

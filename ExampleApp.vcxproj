@@ -76,10 +76,10 @@
     <ClCompile Include="src\example_如何发送一条消息.cpp" />
     <ClCompile Include="src\example_获取进群邀请人.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\example_简单词库.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\APPINFO.h" />
-    <ClInclude Include="src\string_seh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="com.example.demo.json" />

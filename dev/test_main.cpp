@@ -36,20 +36,8 @@ void unpack_test()
 	cout << p.getstring().c_str() << endl;
 }
 
-#include "INItool.h"
-using namespace ini;
 void ini_test()
 {
-	cout << "ini_test" << endl;
-
-	INItool ini("../test.ini");
-	cout << ini << endl << endl;
-
-	INItool ini2;
-	ini2["1"]["2"] = "3";
-	cout << ini2 << endl << endl;
-
-	cout << string(ini["¶Î2"]["¼ü"]).c_str();
 }
 
 class TimeTool {
@@ -238,12 +226,8 @@ void sqlite_test()
 }
 
 #include <winSpeak.h>
-void main() {
+void Speak_test() {
 	TimeTool k;
-
-	//sqlite_test();
-	//ini_test();
-	//unpack_test();
 	k.st();
 	auto hr = Speak_init();
 	k.end();
@@ -262,6 +246,12 @@ void main() {
 	else {
 		cout << "³õÊ¼»¯Ê§°Ü" << endl;
 	}
+}
+void main() {
+	//sqlite_test();
+	ini_test();
+	//unpack_test();
+	//Speak_test()
 
 	cin.get();
 }

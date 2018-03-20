@@ -15,8 +15,6 @@ bool py_init();
 #include <memory>
 std::shared_ptr<char*> U(const char* strGbk);
 std::shared_ptr<char*> G(const char* strUtf8);
-#define _U(CHAR) (*U(CHAR))
-#define _G(CHAR) (*G(CHAR))
 
 PyObject *getCQAPI();
 

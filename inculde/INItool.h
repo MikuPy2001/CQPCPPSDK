@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-namespace ini {
+namespace INI {
 	class Sections;
 	class INItool;
 
@@ -38,8 +38,10 @@ namespace ini {
 	//键值对集合(又名 段)
 	class Sections :
 		//        public //不想公开...
+		private
 		std::vector<Parameters>
 	{
+		
 		std::string name;
 		Comments commentses;
 		friend std::ostream & operator<<(std::ostream &out, Sections &t);
@@ -50,7 +52,7 @@ namespace ini {
 		Sections(std::string name);
 		Sections(std::string name, Comments commentses);
 
-		//std::string getName()const{ return name; }
+		std::string getName()const { return name; }
 
 		Parameters& operator[](std::string parametersName);
 		Parameters& get(std::string parametersName, int index);
@@ -89,7 +91,10 @@ namespace ini {
 		Sections& get(std::string sectionsName);
 
 		//删除指定段及其下属所有键和值
-		void del(std::string sectionsName);
+		//void del(std::string sectionsName);
+
+		decltype(sectionses.begin()) begin() { return sectionses.begin(); }
+		decltype(sectionses.end()) end() { return sectionses.end(); }
 	};
 	//将ini输入到流
 	std::ostream & operator<<(std::ostream &out, INItool &t);

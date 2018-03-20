@@ -12,7 +12,7 @@
 
 using namespace std;
 using namespace CQ;
-static Logger logger("初始化");
+static Logger logger("PyInit");
 
 void 反射函数() {
 	py_printex = PyObject_GetAttrString(py_RunTime, "printex");
@@ -63,6 +63,8 @@ void 反射函数() {
 	py_System_GroupMemberIncrease2 = PyObject_GetAttrString(py_RunTime, "System_GroupMemberIncrease2");
 	py_System_GroupMemberIncrease3 = PyObject_GetAttrString(py_RunTime, "System_GroupMemberIncrease3");
 	py_System_GroupMemberIncrease4 = PyObject_GetAttrString(py_RunTime, "System_GroupMemberIncrease4");
+
+	PyErr_Clear();
 }
 bool 准备环境() {
 	if (py_isinit) {
@@ -101,9 +103,9 @@ bool 准备环境() {
 		return false;
 	}
 	auto cq = getCQAPI();
-	logger.Debug() << "cq:" << (int)cq << send;
+	logger.Debug() << "CQ模块地址:" << (int)cq << send;
 	auto r = PyModule_AddObject(py_RunTime, "CQ", cq);
-	logger.Debug() << "PyModule_AddObject:" << r << send;
+	logger.Debug() << "添加到RunTime结果:" << r << send;
 
 	return true;
 }

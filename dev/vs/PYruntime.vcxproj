@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\PYruntime\py_c2py.h" />
     <ClInclude Include="..\PYruntime\py_init.h" />
   </ItemGroup>
   <ItemGroup>

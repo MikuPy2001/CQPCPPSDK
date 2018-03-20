@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="INI">
+      <UniqueIdentifier>{04d51b73-61b0-493b-948a-75fcdd0c049e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test_main.cpp">
@@ -21,13 +24,19 @@
     <ClCompile Include="..\sqlite\sqlitetool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\ini\iniNew.cpp">
+      <Filter>INI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\sqlite\sqlite3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inculde\winSpeak.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="..\ini\inih.h">
+      <Filter>INI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ini\iniNew.h">
+      <Filter>INI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

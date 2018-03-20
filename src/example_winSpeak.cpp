@@ -1,5 +1,4 @@
 #include <CQEVE_GroupMsg.h>
-#include <winSpeak.h>
 #include <CQcode.h>
 
 #include <string>

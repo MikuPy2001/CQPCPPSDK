@@ -137,7 +137,7 @@ void CQ::MsgSend::SEND() {
 			<< "消息发送异常"
 			<< ",类别:" << ID
 			<< ",原文: " << buf
-			<< CQ::send;
+			<< send;
 		break;
 	}
 }

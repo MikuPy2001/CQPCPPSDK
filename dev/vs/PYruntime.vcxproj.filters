@@ -21,6 +21,9 @@
     <ClInclude Include="..\PYruntime\py_init.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\PYruntime\py_c2py.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PYruntime\cq_eve.cpp">
