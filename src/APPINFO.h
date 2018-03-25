@@ -15,4 +15,8 @@
 //----我应该修改成什么----
 //请查阅 http://d.cqp.me/Pro/开发/基础信息
 #define CQAPPID "com.example.demo"
+
+
 #define CQAPPINFO CQAPIVERTEXT "," CQAPPID
+
+//接下来请查阅 example 以快速学习本SDK

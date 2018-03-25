@@ -1,5 +1,5 @@
+#include "iniTemplate.h"
 #include "iniNew.h"
-#include "inih.h"
 using namespace std;
 
 Commentses::Commentses(string)

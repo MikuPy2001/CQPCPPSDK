@@ -19,8 +19,9 @@
     <Library Include="..\sqlite\sqlite3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ini\inih.h" />
     <ClInclude Include="..\ini\iniNew.h" />
+    <ClInclude Include="..\ini\iniTemplate.Cpp.h" />
+    <ClInclude Include="..\ini\iniTemplate.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -32,10 +32,13 @@
     <Library Include="..\sqlite\sqlite3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ini\inih.h">
+    <ClInclude Include="..\ini\iniNew.h">
       <Filter>INI</Filter>
     </ClInclude>
-    <ClInclude Include="..\ini\iniNew.h">
+    <ClInclude Include="..\ini\iniTemplate.h">
+      <Filter>INI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ini\iniTemplate.Cpp.h">
       <Filter>INI</Filter>
     </ClInclude>
   </ItemGroup>

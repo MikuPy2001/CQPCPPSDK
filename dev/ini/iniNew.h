@@ -1,6 +1,6 @@
 #pragma once
 
-#include "inih.h"
+#include "iniTemplate.h"
 class Ini;
 class Sections;
 class Parameters;

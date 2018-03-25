@@ -11,14 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PYruntime\py_c2py.h" />
-    <ClInclude Include="..\PYruntime\py_init.h" />
+    <ClInclude Include="..\PYruntime\py_转码.h" />
+    <ClInclude Include="..\PYruntime\PyTupleGet.h" />
+    <ClInclude Include="..\PYruntime\PyTupleMinute.h" />
+    <ClInclude Include="..\PYruntime\py_环境.h" />
+    <ClInclude Include="..\PYruntime\py_变量.h" />
+    <ClInclude Include="..\PYruntime\Py2C.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PYruntime\cq_eve.cpp" />
     <ClCompile Include="..\PYruntime\dllmain.cpp" />
-    <ClCompile Include="..\PYruntime\py_init.cpp" />
+    <ClCompile Include="..\PYruntime\py_初始化.cpp" />
     <ClCompile Include="..\PYruntime\py_api.cpp" />
+    <ClCompile Include="..\PYruntime\py_反射.cpp" />
     <ClCompile Include="..\PYruntime\py_变量.cpp" />
     <ClCompile Include="..\PYruntime\py_转码.cpp" />
   </ItemGroup>

@@ -1,7 +1,9 @@
-#include "py_init.h"
+#include "py_环境.h"
 
 #include <CQLogger.h>
 #include <CQAPI_EX.h>
+#include"PyTupleMinute.h"
+#include"PyTupleGet.h"
 
 using namespace CQ;
 using namespace std;
@@ -17,19 +19,22 @@ SPO(py_addLog) {
 	PYO res = nullptr;
 	Py_BEGIN_ALLOW_THREADS
 
-	整数型 优先级;
-	文本型 类型;
-	文本型 内容;
-	整数型 r;
-
-	if (!PyArg_ParseTuple(args, "iss", &优先级, &类型, &内容)) {
-		logger.Debug() << "解析失败" << send;
-		return NULL;
+	整数型 优先级;string 类型;string 内容;
+	PyTupleMinute r(args, &优先级, &类型, &内容);
+	if (r) {
+		res = PyTupleGet(addLog(优先级, 类型.c_str(), 内容.c_str()));
 	}
+	else
+		logger.Debug() << "解析失败" << send;
 
-	auto 类型G = G(类型), 内容G = G(内容);
-	r = addLog(优先级, *类型G, *内容G);
-	res = Py_BuildValue("(i)", r);
+	//if (PyArg_ParseTuple(args, "iss", &优先级, &类型, &内容)) {
+	//	auto 类型G = G(类型), 内容G = G(内容);
+	//	r = addLog(优先级, *类型G, *内容G);
+	//	res = Py_BuildValue("(i)", r);
+	//}
+	//else
+	//	logger.Debug() << "解析失败" << send;
+
 	Py_END_ALLOW_THREADS;
 
 	return res;

@@ -1,12 +1,3 @@
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
-#include "iniNew.h"
 #include "..\..\inculde\INItool.h"
 #include <fstream>
 #include <sstream>
@@ -100,9 +91,7 @@ void INItool::load(string string)
 	½âÎö(stringstream(string));
 }
 
-bool INI::INItool::save() { return save(filename); }
-
-bool INI::INItool::save(std::string filename)
+bool INItool::save(std::string filename)
 {
 	ofstream out(filename);
 	if (!out.is_open())
@@ -135,7 +124,7 @@ Sections& INItool::get(std::string sectionsName)
 	return sectionses.back();
 }
 
-ostream&INI::operator<<(ostream& out, INItool&t)
+ostream&operator<<(ostream& out, INItool&t)
 {
 	for (auto&y : t.sectionses)
 		out << y;
@@ -150,14 +139,14 @@ Parameters::Parameters(std::string key)
 	: key(key), noshow(true)
 {}
 
-
 Parameters& Parameters::operator=(std::string val)
 {
 	this->val = val;
 	return *this;
 }
 
-ostream& INI::operator<<(ostream& out, Comments&t){
+ostream& operator<<(ostream& out, Comments&t)
+{
 	for (auto&y : t)
 	{
 		auto c = LTrim(const_cast<char*>(y.c_str()));
@@ -167,7 +156,7 @@ ostream& INI::operator<<(ostream& out, Comments&t){
 	}
 	return out;
 }
-ostream& INI::operator<<(ostream& out, Parameters&t)
+ostream& operator<<(ostream& out, Parameters&t)
 {
 	out << t.commentses << endl
 		<< t.key.c_str() << "=" << t.val.c_str()
@@ -175,7 +164,7 @@ ostream& INI::operator<<(ostream& out, Parameters&t)
 	return out;
 }
 
-Parameters& INI::operator>>(Parameters& t, std::string s)
+Parameters& operator>>(Parameters& t, std::string s)
 {
 	s = t.val;
 	return t;
@@ -187,7 +176,9 @@ Sections::Sections(std::string name)
 
 Sections::Sections(string name, Comments commentses)
 	: name(name), commentses(commentses)
-{}Parameters& Sections::operator[](std::string parametersName)
+{}
+
+Parameters& Sections::operator[](std::string parametersName)
 {
 	return get(parametersName, 0);
 }
@@ -209,7 +200,7 @@ Parameters& Sections::get(std::string parametersName, int index)
 	else return*tep;
 }
 
-ostream& INI::operator<<(ostream& out, Sections&t)
+ostream& operator<<(ostream& out, Sections&t)
 {
 	if (t.size())
 	{

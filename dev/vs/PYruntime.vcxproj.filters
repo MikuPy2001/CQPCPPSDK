@@ -18,10 +18,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PYruntime\py_init.h">
+    <ClInclude Include="..\PYruntime\py_变量.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\PYruntime\py_c2py.h">
+    <ClInclude Include="..\PYruntime\py_环境.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\PyTupleGet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\PyTupleMinute.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\py_转码.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PYruntime\Py2C.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,13 +47,16 @@
     <ClCompile Include="..\PYruntime\dllmain.cpp">
       <Filter>NewFilter1</Filter>
     </ClCompile>
-    <ClCompile Include="..\PYruntime\py_init.cpp">
+    <ClCompile Include="..\PYruntime\py_转码.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PYruntime\py_反射.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PYruntime\py_初始化.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\PYruntime\py_变量.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\PYruntime\py_转码.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

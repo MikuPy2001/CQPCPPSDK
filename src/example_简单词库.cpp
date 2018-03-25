@@ -2,21 +2,19 @@
 #include <CQEVE_PrivateMsg.h>
 #include <CQMsgSend.h>
 #include <CQAPI_EX.h>
-#include  <INItool.h>
+#include <INItool.h>
 
 #include <string>
 using namespace std;
 using namespace CQ;
 
 int  Thesaurus(ÎÄ±¾ÐÍ msg, MsgSend send) {
+	return 0;
 }
 
 EVE_Enable(ThesaurusE) {
 	auto file = string(getAppDirectory()) + "Thesaurus.ini";
-	ini::INItool INI(file);
-	for (auto t : INI) {
-
-	}
+	return 0;
 }
 
 EVE_PrivateMsg(ThesaurusP) {
