@@ -10,6 +10,12 @@ using namespace std;
 //回传的char*自行销毁
 shared_ptr<char*> U(const char* strGbk)//传入的strGbk是GBK编码
 {
+	return make_shared<char*>(_U(strGbk));
+}
+//gbk转UTF-8
+//回传的char*自行销毁
+char* _U(const char* strGbk)//传入的strGbk是GBK编码
+{
 	char* strUtf8;
 	//delete[]strUtf8;
 
@@ -27,12 +33,18 @@ shared_ptr<char*> U(const char* strGbk)//传入的strGbk是GBK编码
 	//此时的strUtf8是UTF-8编码
 	delete[]strUnicode;
 	strUnicode = NULL;
-	return make_shared<char*>(strUtf8);
+	return strUtf8;
 }
 
 //UTF-8转gbk
 //回传的char*自行销毁
 shared_ptr<char*> G(const char* strUtf8)//传入的strUtf8是UTF-8编码
+{
+	return make_shared<char*>(_G(strUtf8));
+}
+//UTF-8转gbk
+//回传的char*自行销毁
+char* _G(const char* strUtf8)//传入的strUtf8是UTF-8编码
 {
 	char *strGbk;
 	//delete[]strGbk;
@@ -51,5 +63,5 @@ shared_ptr<char*> G(const char* strUtf8)//传入的strUtf8是UTF-8编码
 	//此时的strTemp是GBK编码
 	delete[]strUnicode;
 	strUnicode = NULL;
-	return make_shared<char*>(strGbk);
+	return strGbk;
 }

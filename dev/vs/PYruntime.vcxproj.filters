@@ -36,6 +36,9 @@
     <ClInclude Include="..\PYruntime\Py2C.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\PYruntime\PyObjGet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PYruntime\cq_eve.cpp">

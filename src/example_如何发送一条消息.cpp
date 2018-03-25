@@ -45,7 +45,7 @@ EVE_PrivateMsg_EX(SendMsg) {
 	if (!message.compare("CQ:image")) {
 		logger.Debug() << "raw模式:" << msg.isRAW() << send;
 		// 发送一个图片
-		msg << code::image("123.png") << send;
+		msg << code::image("123.gif") << send;
 	}
 
 	if (!message.compare("CQ:face"))

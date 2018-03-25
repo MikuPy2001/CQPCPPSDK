@@ -37,7 +37,7 @@ void 加载SDK() {
 }
 void 运行SDK() {
 	cout << "[Run]" << "PrivateMsg1" << endl;
-	PrivateMsg1(1, 2, 3, "123", 0);
+	PrivateMsg1(1, 2, 3, "中文测试", 0);
 
 	cout << "[Run]" << "测试完成" << endl;
 }

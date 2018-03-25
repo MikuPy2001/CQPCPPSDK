@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\PYruntime\PyObjGet.h" />
     <ClInclude Include="..\PYruntime\py_转码.h" />
     <ClInclude Include="..\PYruntime\PyTupleGet.h" />
     <ClInclude Include="..\PYruntime\PyTupleMinute.h" />
@@ -46,7 +47,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />

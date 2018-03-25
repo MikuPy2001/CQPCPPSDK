@@ -1,6 +1,7 @@
 #pragma once
 #include <Python.h>
 //#include <utility>
+#include <iostream>
 
 #include "Py2C.h"
 
@@ -11,7 +12,7 @@ class PyTupleMinute {
 
 	template<class T, class...Args>
 	void set(T one, Args...args);
-	void set() { ok = true; };
+	void set();
 
 public:
 	template<class...Args>
@@ -27,6 +28,6 @@ template<class T, class ...Args>
 inline void PyTupleMinute::set(T one, Args ... args)
 {
 	PyObject* obj = PyTuple_GetItem(Tuple, index++);
-	if (setPyObj(obj, one))
-		set(args...);
+	if (setPyObj(obj, one))	set(args...);
 }
+inline void PyTupleMinute::set() { ok = true; }
