@@ -70,18 +70,17 @@ SPO(py_sendDiscussMsg) { 喵 长整数型 讨论组号; 文本型 msg; 帕 &讨论组号, &msg 斯
 SPO(py_sendGroupMsg) { 喵 长整数型 群号; 文本型 msg; 帕 &群号, &msg 斯 res = PyTupleGet(sendGroupMsg(群号, msg)); DE_ZA }
 SPO(py_sendLike) { 喵 长整数型 QQID; 整数型 times; 帕 &QQID, &times 斯 res = PyTupleGet(sendLike(QQID, times)); DE_ZA }
 SPO(py_sendPrivateMsg) { 喵 长整数型 QQ; 文本型 msg; 帕 &QQ, &msg 斯 res = PyTupleGet(sendPrivateMsg(QQ, msg)); DE_ZA }
-SPO(py_setDiscussLeave) { 喵 长整数型 讨论组号 帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setFatal) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setFriendAddRequest) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupAddRequest) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupAdmin) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupAnonymous) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupAnonymousBan) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupBan) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupCard) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupKick) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupLeave) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
-SPO(py_setGroupSpecialTitle) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
+SPO(py_setDiscussLeave) { 喵 长整数型 讨论组号 帕 &讨论组号 斯 res = PyTupleGet(setDiscussLeave(讨论组号)); DE_ZA }
+SPO(py_setFriendAddRequest) { 喵 文本型 请求反馈标识;整数型 反馈类型;文本型 备注; 帕 &求反馈标识,&反馈类型,&备注 斯 res = PyTupleGet(setFriendAddRequest(请求反馈标识,反馈类型,备注)); DE_ZA }
+SPO(py_setGroupAddRequest) { 喵 文本型 请求反馈标识;整数型 请求类型,反馈类型;文本型 备注; 帕 &求反馈标识,&请求类型,&反馈类型,&备注 斯 res = PyTupleGet(setGroupAddRequest(请求反馈标识,请求类型,反馈类型,备注)); DE_ZA }
+SPO(py_setGroupAdmin) { 喵 长整数型 群号, QQID;逻辑型 成为管理员; 帕 &群号, &QQID, &成为管理员 斯 res = PyTupleGet(setGroupAdmin(群号, QQID, 成为管理员)); DE_ZA }
+SPO(py_setGroupAnonymous) { 喵 长整数型 群号;逻辑型 开启匿名; 帕 &群号,&开启匿名 斯 res = PyTupleGet(setGroupAnonymous(群号,开启匿名)); DE_ZA }
+SPO(py_setGroupAnonymousBan) { 喵 长整数型 群号;文本型 匿名;长整数型 禁言时间; 帕 &群号,&匿名,&禁言时间 斯 res = PyTupleGet(setGroupAnonymousBan(群号,匿名,禁言时间)); DE_ZA }
+SPO(py_setGroupBan) { 喵 长整数型 群号,QQID,禁言时间; 帕 &群号,&QQID,&禁言时间 斯 res = PyTupleGet(setGroupBan(群号, QQID,禁言时间)); DE_ZA }
+SPO(py_setGroupCard) { 喵 长整数型 群号,QQID;文本型 新名片_昵称 帕 &群号,&QQID,&新名片_昵称 斯 res = PyTupleGet(setGroupCard(群号,QQID,新名片_昵称)); DE_ZA }
+SPO(py_setGroupKick) { 喵 长整数型 群号,  QQID;逻辑型 拒绝再加群 帕 &群号,&QQID,&拒绝再加群 斯 res = PyTupleGet(setGroupKick(群号,QQID,拒绝再加群)); DE_ZA }
+SPO(py_setGroupLeave) { 喵 长整数型 群号;逻辑型 是否解散 帕 &群号,&是否解散 斯 res = PyTupleGet(setGroupLeave(群号,是否解散)); DE_ZA }
+SPO(py_setGroupSpecialTitle) { 喵 长整数型 群号,QQID 帕 群号,QQID 斯 res = PyTupleGet(setGroupSpecialTitle(群号,QQID)); DE_ZA }
 SPO(py_setGroupWholeBan) { 喵  帕  斯 res = PyTupleGet(); DE_ZA }
 
 static PyMethodDef API方法数组[] = {
@@ -101,7 +100,6 @@ static PyMethodDef API方法数组[] = {
  //{ "sendLike"            ,py_sendLike, METH_VARARGS ,"" },
  //{ "sendPrivateMsg"      ,py_sendPrivateMsg, METH_VARARGS , ""},
  //{ "setDiscussLeave"     ,py_setDiscussLeave, METH_VARARGS , ""},
- //{ "setFatal"            ,py_setFatal, METH_VARARGS ,"" },
  //{ "setFriendAddRequest" ,py_setFriendAddRequest, METH_VARARGS ,"" },
  //{ "setGroupAddRequest"  ,py_setGroupAddRequest, METH_VARARGS , ""},
  //{ "setGroupAdmin"       ,py_setGroupAdmin, METH_VARARGS ,"" },
