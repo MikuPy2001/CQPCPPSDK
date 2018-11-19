@@ -78,7 +78,7 @@ CQ::GroupMemberInfo::GroupMemberInfo(Unpack & msg) { setdata(msg); }
 
 CQ::GroupMemberInfo::GroupMemberInfo(const char* msg)
 {
-	if (msg[0] == '0')
+	if (msg[0] == '\0')
 	{
 		Void();
 	}
